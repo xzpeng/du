@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(1)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(10)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(10) a").css("color","#F60");
+});
+
+function check(){
+	if($("#BankName").val() == ""){
+		alert("开户银行名称不能为空！");
+		$("#BankName").focus();
+		return false;
+	}else{
+		if($("#BankBranch").val() == ""){
+		    alert("开户分行名称不能为空!");
+			$("#BankBranch").focus();
+			return false;
+		}else{
+			if($("#BankAccountNumber").val() == ""){
+				alert("开户银行账户不能为空！");
+				$("#BankAccountNumber").focus();
+				return false;
+			}else{
+				if($("#BankCompellation").val() == ""){
+					alert("开户人姓名不能为空！");
+					$("#BankCompellation").focus();
+					return false;
+				}else{
+					if(confirm("您确认要添加提款银行吗？") == true){
+					    return true;
+					}else{
+						return false;
+					}
+				}
+			}
+		}
+	}
+}
+
+function DelBank(id){
+	if(confirm("您确认要删此银行信息吗？") == true){
+	    location.href = "/User_Index_DelBank_id_"+id+".html";
+	}
+}
+
+
+function morenselect(){
+	if($("#moren").attr("checked") == "checked"){
+	    $("#moren").attr("checked",false);
+	}else{
+		$("#moren").attr("checked",true);
+		}
+}
+</script>
+<style type="text/css">
+.jbxx table{
+	width:100%;
+	height:auto;
+	}
+.jbxx table tr td{
+	width:50%;
+	height:40px;
+	vertical-align:middle;
+	text-align:center;
+	}
+.jbxx a{
+	color:#039;
+	text-decoration:none;
+	}		
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:zhgl" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;登录记录
+</div>
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-bottom:0px; border-top:0px;">
+<div class="jbxx">
+     <table border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td>登录时间</td>
+      <td>登录IP地址</td>     
+     </tr>
+     </table>
+    </div>
+   <assign name="var" value="1" />
+  
+   <volist name="list" id="vo">
+    <div class="jbxx">
+     <table border="0" cellpadding="0" cellspacing="0">
+    
+       <if condition="($var == 1) AND ($pp == 1)">
+       <tr style="background-color:#F9C1D7">
+       <td style="text-align:left; padding-left:50px;">
+        <span style="color:#F00;">【本次登录】</span>
+      <else />
+           <if condition="($var == 2) AND ($pp == 1)">
+           <tr style="background-color:#C8C5FA">
+           <td style="text-align:left; padding-left:50px;">
+           <span style="color:#00F;">【上次登录】</span>
+           <else />
+           <tr>
+           <td style="text-align:left; padding-left:50px;">
+           </if>  
+    </if>
+      <{$vo.dldate}></td>
+      <td><{$vo.ip}></td>     
+     </tr>
+     </table>
+     <span style="display:none"><{$var++}></span>
+    </div>
+   </volist>
+     <div class="jbxx" style="text-align:center; color:#F00; font-size:15px;">
+     <{$page}>
+    </div>
+    
+    
+    
+</div>
+
+
+</div>
+
+
+<include file="Index:foot" />
+
+</body>
+</html>

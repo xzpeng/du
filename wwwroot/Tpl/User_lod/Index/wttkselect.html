@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+   $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(3)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(4)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(4) a").css("color","#F60");
+});	
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:150px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:400px;
+	}	
+	
+.selectclass{
+	width:500px;
+	height:400px;
+	text-align:center;
+	float:left;
+	}
+	
+.selectclass img{
+	margin-top:165px;
+	cursor:pointer;
+	border:0px;
+	}	
+.selectclass span{
+	font-size:13px;
+	color:#F30;
+	}		
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:fktop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+<span style="font-size:13px; color:#00F">【单笔最小提款金额：<span style="color:#0C3; font-size:15px;"><{$minmoney}></span> 元&nbsp;&nbsp;
+      单笔最大提款金额：<span style="color:#0C3; font-size:15px;"><{$maxmoney}></span> 元&nbsp;&nbsp;每天可提款总金额：<span style="color:#0C3; font-size:15px;"><{$mtsxmoney}></span>&nbsp;&nbsp;每天提款最大次数：<span style="color:#0C3; font-size:15px;"><{$mttkcs}></span> 次】</span>
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+  <br />
+   <div id="txtitle">
+      <div style="width:450px; font-size:13px; border:0px;">
+      今天已申请提款总金额：<span style="color:#F00"><{$yqlmoney}></span> 元&nbsp;&nbsp;&nbsp;&nbsp;
+      今天已申请提款：<span style="color:#F00"><{$dttkcs}></span> 次
+      </div>
+   </div>
+
+  <hr>
+  
+  <div id="txcontent">
+  <if condition="$tkif == 1">
+   <div class="selectclass">
+     <img src="/Public/User/images/tyjepldk.gif" onclick="javascript:location.href='/User_Index_wttk.html'" /><br /><br />
+     <span>给所有委托提款银行账户提款相同的金额！</span>
+     </div>
+     <div class="selectclass">
+     <img src="/Public/User/images/btjepldk.gif" onclick="javascript:location.href='/User_Index_wttkf.html'">
+     <br><br>
+     <span>分别给每个委托提款银行账户提款不同的金额！</span>
+     </div>
+     <else />
+         <if condition="$tkiflx == 0">
+     <p style="font-size:30px; color:#F00; margin-top:150px; margin-left:120px;">您今天已经申请提款 <{$mttkcs}> 次,超过当天最大申请提款次数！</p>
+          <else />
+          <p style="font-size:30px; color:#F00; margin-top:150px; margin-left:380px;">未开启委托批量结算!</p>
+          </if>
+     </if>
+  </div>
+  
+</div>
+
+
+</div>
+
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+</body>
+</html>

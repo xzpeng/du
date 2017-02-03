@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(5)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(0)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(0) a").css("color","#F60");
+	$(".tjzp").click(function(e) {
+        $(this).next("span").show();
+		$(this).hide();
+    });
+});
+
+function check(){
+    if($("#fl").val() == ""){
+	     alert("费率不能为空！");
+		 return false;
+	}
+}
+
+function clearNoNum(obj)
+{
+	//先把非数字的都替换掉，除了数字和.
+	obj.value = obj.value.replace(/[^\d.]/g,"");
+	//必须保证第一个为数字而不是.
+	obj.value = obj.value.replace(/^\./g,"");
+	//保证只有出现一个.而没有多个.
+	obj.value = obj.value.replace(/\.{2,}/g,".");
+	//保证.只出现一次，而不能出现两次以上
+	obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+}
+</script>
+<style type="text/css">
+#yggl{
+	width:100%;
+	height:auto;
+	}
+#yggl tr td{
+	height:40px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:13px;
+	}	
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:ygtop" />
+
+
+<!-------------------------------------------------基本信息-------------------------------------------------------->
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;下级管理
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px">
+<form name="Form1" id="Form1" action="<{:U('Index/EditFlEdit')}>" method="post" onsubmit="return check();">
+<input type="hidden" id="id" name="id" value="<{$Think.get.id}>">
+   <table border="0" cellpadding="0" cellspacing="0" style="width:100%;" id="yggl">
+   <tr>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC; width:20%;">
+   下级商户：
+   </td>
+    <td style="font-weight:bold;border-bottom:1px solid #CCC; font-size:20px; color:#03F; width:80%; text-align:left; padding-left:10px;">
+   <{$xjUserName}>
+   </td>
+   </tr>
+    <tr>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC; width:20%;">
+   费率：
+   </td>
+    <td style="font-weight:bold;border-bottom:1px solid #CCC; width:80%; text-align:left; padding-left:10px;">
+   <input type="text" name="fl" id="fl" value="<{$fl|round=5}>" style="font-size:20px; color:#F00;" onkeyup="clearNoNum(this)">&nbsp;&nbsp;&nbsp;&nbsp;
+   <span style="font-size:13px; color:#F00">您自己的费率为<span style="color:#00F"><{$sjfl}></span>,您设置的下家费率不能比您的费率低</span>
+   </td>
+   </tr>
+   </td>
+    <td style="font-weight:bold;border-bottom:1px solid #CCC; text-align:center; color:#F00; font-size:18px;" colspan="2">
+    【请注意，下家费率一旦修改成后不能再次修改！】
+   </td>
+   </tr>
+   <tr>
+   <td colspan="2"><input type="image" src="/Public/User/images/qrxg.gif">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Public/User/images/fh.gif" style="cursor:pointer" onclick="javascript:location.href='<{:U("Index/tjyg")}>'"></td>
+   </tr>
+   </table>
+   </form>
+    
+</div>
+
+</div>
+
+
+
+<include file="Index:foot" />
+</body>
+</html>

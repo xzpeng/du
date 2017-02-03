@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<style type="text/css">
+#tongdao{
+	width:900px;
+
+	}
+#tongdao div{
+	width:300px;
+	float:left;
+	}	
+#tongdao div input[type='text']{
+	width:150px;
+	}	
+</style>
+</head>
+
+<body>
+<form name="Form1" method="post" action="/SjtAdminSjt_Tongdao_EditGamepay_apiname_<{$Think.get.apiname}>.html">
+<div id="tongdao">
+	<div style="font-size:25px; text-align:center; color:#00F; font-weight:bold; width:900px;"></div>
+    <foreach name="GameArray" item="vo">
+    <div>
+    <switch name="key">
+        <case value="1">天宏一卡通</case>
+        <case value="2">完美一卡通</case>
+        <case value="3">网易一卡通</case>
+        <case value="4">联通充值卡</case>
+        <case value="5">久游一卡通</case>
+        <case value="6">QQ币充值卡</case>
+        <case value="7">搜狐一卡通</case>
+        <case value="8">征途游戏卡</case>
+        <case value="9">骏网一卡通</case>
+        <case value="10">盛大一卡通</case>
+        <case value="11">全国神州行</case>
+        <case value="12">天下一卡通</case>
+        <case value="13">电信充值</case>
+        <case value="14">光宇一卡通</case>
+        <case value="15">纵游一卡通</case>
+        <case value="16">移动短信</case> 
+        <case value="17">联通短信</case>
+        <case value="18">电信短信</case> 
+    </switch>
+    ：<input type="text" name="<{$key}>" value="<{$vo}>"></div>
+    </foreach>
+    
+    <div style="text-align:center;font-weight:bold; width:800px;"><input type="submit" value="确认修改">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重 置">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="返 回" onclick="javascript:location.href='/SjtAdminSjt_Tongdao_Index_apiname_<{$Think.get.apiname}>.html';"></div>
+</div>
+</form>
+</body>
+</html>

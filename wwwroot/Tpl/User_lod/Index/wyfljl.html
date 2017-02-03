@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/showDialog.js' />
+<css href='/Public/User/css/showDialog.css' />
+<js href='/Public/User/js/sqtjl.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+
+   $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(3)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(6)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(6) a").css("color","#F60");
+	
+	$("#qrkt").click(function(e) {
+        ////////////////////////////////////////////////////////////////
+		if($("#zfmm").val() == ""){
+			//alert("支付密码不能为空！");
+			showDialog("info", "<span style='color:#f00; font-size:20px;'>支付密码不能为空!</span>","调整费率", 500);
+			$("#zfmm").focus();
+			return false;
+			}
+		$.ajax({
+		  type:'POST',
+		  url:'/User_Index_yzzfmm.html',
+		  data:"paypassword="+$("#zfmm").val(),
+		  dataType:'text',
+		  success:function(str){
+				  if(str != "ok"){
+					  //alert("支付密码错误！");
+					  showDialog("info", "<span style='color:#f00; font-size:20px;'>支付密码错误!</span>","调整费率", 500);
+					  $("#zfmm").focus();
+				  }else{
+					 showDialog("confirm", "<span style='color:#f00; font-size:20px;'>您确认要购买调整费率吗？</span>","调整费率", 500,tjwyfljl);
+						
+					  
+					  }
+			  },
+		  error:function(){
+			  alert("处理失败！");
+			  }	
+		  });	
+		///////////////////////////////////////////////////////////////
+    });
+	
+	
+	$("input[name='fltype']").click(function(e) {
+        //alert($(this).attr("fl")+"--------"+ $(this).attr("money"));
+		if(parseFloat($(this).attr("money")) <= parseFloat($("#myzhye").val())){
+		      if(parseInt($("#gmzt").val()) == 0){
+				  $(".zftj").show();
+				  $(".yebz").hide();
+			  }else{
+				  $(".zftj").hide();
+				  $(".yebz").hide();
+			  }
+			  
+			
+			  
+		}else{
+			 if(parseInt($("#gmzt").val()) == 0){
+				  $(".zftj").hide();
+				  $(".yebz").show();
+			  }else{
+				  $(".zftj").hide();
+				  $(".yebz").hide();
+			  }
+			}
+    });
+	
+	$("input[name='fltype']:eq(0)").click();
+	
+});
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:800px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:auto;
+	}	
+	
+.selectclass{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-align:left;
+	font-size:15px;
+	margin:0px auto;
+	border-bottom:1px dashed #999999;
+	}
+.selectclass table{
+	width:100%;
+	height:50px;
+	}
+
+.selectclass table tr td{
+	width:11%;
+	height:50px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:12px;
+	}	
+.selectclass a{
+	font-size:13px;
+	color:#333;
+	}
+.selectclass a:hover{
+	
+	}
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:fktop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;费率调整&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+
+  
+  <div id="txcontent">
+  
+  <if condition="$zt == 0 or $zt == 1">
+  <div class="selectclass" style="height:300px; line-height:300px; text-align:center; font-size:20px; color:#F00; font-weight:bold;">
+     只有审核后的商户才能申请开通功能
+      </div>
+  <else />
+    
+          <if condition="$t0 == 1">
+             <volist name="list" id="vo">
+           <div class="selectclass" style="height:40px; line-height:40px; color:#06C; font-weight:bold; background-color:#F0F0F0">
+            &nbsp;&nbsp;<span style="font-size:15px; font-weight:normal"><span style="color:#F00; font-weight:bold;">费率已调整为【<span style="color:#090"><{$vo['fl']*(-100)+100}>%</span>】</span>&nbsp;&nbsp;&nbsp;&nbsp;开始时间：<span style="color:#09C; font-weight:bold;"><{$vo.ks_date}></span>,&nbsp;到期时间：<span style="color:#09C; font-weight:bold;"><{$vo.js_date}></span>,&nbsp;购买价格：<span style="color:#060; font-size:18px; font-weight:bold;"><{$vo.Money}></span>,&nbsp;购买时间：<span style="color:#09C; font-weight:bold;"><{$vo.sq_date}></span></span>
+          </div>
+             </volist>
+          </if>
+     
+     
+      <volist name="listls" id="vo">
+           <div class="selectclass" style="height:40px; line-height:40px; color:#06C; font-weight:bold; background-color:#CCC">&nbsp;&nbsp; <span style="font-size:15px; font-weight:normal"><span style="color:#06F; font-weight:bold;">历史购买记录：</span>&nbsp;&nbsp;&nbsp;&nbsp;开始时间：<span style="color:#09C; font-weight:bold;"><{$vo.ks_date}></span>,&nbsp;到期时间：<span style="color:#09C; font-weight:bold;"><{$vo.js_date}></span>,&nbsp;购买价格：<span style="color:#060; font-size:18px; font-weight:bold;"><{$vo.Money}></span>,&nbsp;购买时间：<span style="color:#09C; font-weight:bold;"><{$vo.sq_date}></span></span>
+          </div>
+             </volist>
+     
+          <div class="selectclass" style="height:40px; line-height:40px; color:#06C; font-weight:bold;">
+         <!-- &nbsp;&nbsp;&nbsp;&nbsp;申请开通T+0需要金额： <span style="color:#090; font-size:18px;"><{$tjlnf}></span> 元/年-->
+         &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="fltype" fl="0.988" money="1000">&nbsp;<span style="color:#000">1.2%</span>&nbsp;&nbsp;&nbsp;&nbsp;【<span style="color:#F00; font-size:15px;">1000</span>元】&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="fltype" fl="0.99" money="1500">&nbsp;<span style="color:#000">1%</span>&nbsp;&nbsp;&nbsp;&nbsp;【<span style="color:#F00; font-size:15px;">1500</span>元】&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="fltype" fl="0.992" money="4000">&nbsp;<span style="color:#000">0.8%</span>&nbsp;&nbsp;&nbsp;&nbsp;【<span style="color:#F00; font-size:15px;">4000</span>元】&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="fltype" fl="0.994" money="7000">&nbsp;<span style="color:#000">0.6%</span>&nbsp;&nbsp;&nbsp;&nbsp;【<span style="color:#F00; font-size:15px;">7000</span>元】&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="fltype" fl="0.996" money="10000">&nbsp;<span style="color:#000">0.4%</span>&nbsp;&nbsp;&nbsp;&nbsp;【<span style="color:#F00; font-size:15px;">10000</span>元】
+          </div>
+           <div class="selectclass" style="height:40px; line-height:40px; color:#06C; font-weight:bold;">
+          &nbsp;&nbsp;&nbsp;&nbsp;您的账户余额： <span style="color:#F00; font-size:18px;"><{$Money}></span> 元
+          <input type="hidden" id="myzhye" value="<{$Money}>">
+          <input type="hidden" id="gmzt" value="<{$t0}>">
+          </div>
+       
+       <!------------------------------------------------------------------------------------------------------------------->
+        
+           
+          <div class="selectclass zftj" style="height:40px; line-height:40px; color:#06C; font-weight:bold; display:none;">
+          &nbsp;&nbsp;&nbsp;&nbsp;请输入支付密码： <input type="password" name="zfmm" id="zfmm" style="width:200px; font-size:20px;">
+          </div>
+         
+           <div class="selectclass zftj" style="height:40px; line-height:40px; color:#06C; text-align:center; font-weight:bold; display:none;">
+             <img src="/Public/User/images/qrkt.gif" style="vertical-align:middle; cursor:pointer;" id="qrkt">
+          </div>
+       <!-------------------------------------------------------------------------------------------------------------------> 
+         
+       
+           <!-------------------------------------------------------------------------------------------------------------------> 
+           <div class="selectclass yebz" style="height:300px; line-height:300px; text-align:center; font-size:20px; color:#F00; font-weight:bold; display:none;">
+           您的余额不足！<a href="/User_Index_chongzhi.html" target="_blank"><img src="/Public/User/images/cz.gif" style="vertical-align:middle; cursor:pointer; border:0px;"></a>
+          </div>
+          <!------------------------------------------------------------------------------------------------------------------->
+        
+       
+
+      
+  </if>
+   
+  
+   
+   
+  </div>
+  
+</div>
+
+
+</div>
+ 
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+
+</body>
+</html>

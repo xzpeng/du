@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{:C("WEB_NAME")}>会员管理后台</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(0)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(3)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(3) a").css("color","#F60");
+	$(".tjzp").click(function(e) {
+        $(this).next("span").show();
+		$(this).hide();
+    });
+});
+
+function tjsh(){
+	if(confirm("请确保完善了基本资料后再提交审核，提交审核后不能再修改基本信息！") == true){
+		location.href = "/User_Index_shjksh.html";
+	}
+}
+
+function sctp(number){
+   $("#scnumber").val(number);
+   document.Formszsc.submit();
+}
+
+</script>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:shjktop" />
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------->
+<volist name="list" id="vo">
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;审核信息&nbsp;&nbsp;<span style="font-size:15px; color:#999">(
+<if condition="$vo.Zt == 0">
+未审核
+<elseif condition="$vo.Zt == 1" />
+审核中
+<elseif condition="$vo.Zt == 2" />
+已审核
+</if>
+)</span>
+<if condition="$vo.Zt == 0">
+【<span style="font-size:15px; color:#F00">请完善基本信息后提交审核，审核通过后才能使用商户接口</span>】
+
+<img src="/Public/User/images/tjsh.gif" onclick="javascript:tjsh()" style="vertical-align:middle; cursor:pointer;">
+</if>
+</div>
+
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px">
+
+<div class="jbxx" style="color:#999">
+      商户ID：
+      &nbsp;&nbsp;<span class="tsts" style="font-size:18px; color:#000;"><{$_SESSION["UserID"]+10000}></span>
+     </div>
+     <div class="jbxx" style="color:#999">
+      密钥：
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <if condition="$vo.Zt != 2">
+      <span class="tsts">审核通过后由系统自动生成，生成后不可修改</span>
+      <else />
+      <span class="tsts" style="font-size:18px; color:#000;"><{$vo.Key}></span>
+      </if>
+     </div>
+      <if condition="$vo.Zt == 2">
+     <div class="jbxx" style="color:#999">
+      提交地址：
+      <span class="tsts" style="font-size:18px; color:#000;">http://<{:C("WEB_URL")}>/Payapi_Index_Pay.html</span>
+     </div>
+ </if>
+
+<div style="border:1px solid #ccc; margin-top:30px; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;商户信息&nbsp;&nbsp;
+</div>
+    <form name="Form1" method="post" action="\User_Index_shjkEdits.html">
+    <div class="jbxx" style="color:#999">
+    商户名称：
+    <if condition="$vo.Zt == 0">
+    <input type="text" class="input_text" name="CompanyName" id="CompanyName" style="width:300px;" value="<{$vo.CompanyName}>">
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">审核通过后不能修改</span>
+    <else />
+    <span style="color:#333;"><{$vo.CompanyName}></span>
+    </if>
+    </div>
+    <div class="jbxx" style="color:#999">
+    网站名称：
+     <if condition="$vo.Zt == 0">
+    <input type="text" class="input_text" name="WebsiteName" id="WebsiteName" style="width:300px;" value="<{$vo.WebsiteName}>" />
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">审核通过后不能修改</span>
+     <else />
+    <span style="color:#333;"><{$vo.WebsiteName}></span>
+    </if>
+    </div>
+     <div class="jbxx" style="color:#999">
+      网站域名：
+       <if condition="$vo.Zt == 0">
+      <input type="text" class="input_text" name="WebsiteUrl" id="WebsiteUrl" style="width:300px;" value="<{$vo.WebsiteUrl}>">
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">审核通过后不能修改</span>
+       <else />
+    <span style="color:#333;"><{$vo.WebsiteUrl}></span>
+    </if>
+     </div>
+     
+    <!------------------------------------------------------------------------------->
+     
+    <if condition="$vo.Zt == 0">
+       
+       <div class="jbxx" style="text-align:center; height:50px;">
+       <input type="image" src="/Public/User/images/bc.gif" style="vertical-align:middle">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="/Public/User/images/chongzhi.gif" onclick="javascript:document.Form1.reset()" style="vertical-align:middle; cursor:pointer;">
+    </div>
+     <div class="jbxx"></div>
+     </if>  
+    
+    </form>
+    <!------------------------------------------------------------------------------->
+     
+    
+ 
+     
+   
+    <!------------------------------------------------------------------------------------------------------------->
+
+ 
+    <!------------------------------------------------------------------------------------------------------------->
+  
+     <!------------------------------------------------------------------------------------------------------------->
+
+ 
+  
+    <!------------------------------------------------------------------------------------------------------------->
+  
+     <!------------------------------------------------------------------------------------------------------------->
+
+ 
+  
+    <!------------------------------------------------------------------------------------------------------------->
+   
+  <!-------------------------------------------------------------------------------------------------------------><!------------------------------------------------------------------------------------------------------------->
+  
+ 
+    
+    </volist> 
+
+<!--------------------------------------------------------------------------------------------------------->
+
+
+<include file="Index:foot" />
+</body>
+</html>

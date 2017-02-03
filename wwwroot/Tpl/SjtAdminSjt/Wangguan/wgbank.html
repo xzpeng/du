@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+#listuser{
+	margin-top:20px;
+	}
+#listuser tr td{
+	height:80px;
+	vertical-align:middle;
+	}
+</style>
+</head>
+
+<body>
+<form name="Form1" method="post" action="/SjtAdminSjt_Wangguan_wgbankedit.html">
+<table cellpadding="0" cellspacing="0" border="0" id="listuser">
+<tr>
+<td>
+请选择系统默认的网银通道：
+<input type="hidden" value="<{$id}>" name="id">
+<select name="DefaultBank" id="DefaultBank">
+<volist name="listbank" id="bank">
+
+<option value="<{$bank.id}>"><{$bank.myname}>(网银)</option>
+</volist>
+<option value="10001">银联无卡支付</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="确认修改">
+<script type="text/javascript">
+$("#DefaultBank").val(<{$DefaultBank}>);
+</script>
+</td>
+</tr>
+</table>
+
+</form>
+</body>
+</html>

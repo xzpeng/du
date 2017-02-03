@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/js/floatDiv.js' />
+<js href='/Public/User/js/wttkf.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(3)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(4)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(4) a").css("color","#F60");
+});
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:800px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:auto;
+	}	
+	
+.selectclass{
+	width:95%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-align:left;
+	font-size:15px;
+	margin:0px auto;
+	border-bottom:1px dashed #999999;
+	}
+.moneyclass,.zfmminput{
+	width:100px;
+	height:25px;
+	vertical-align:middle;
+	font-size:20px;
+	color:#F00;
+	font-weight:bold;
+	}
+#banklist{
+	width:990px;
+	height:290px;
+	line-height:180px;
+	font-size:30px;
+	color:#F00;
+	border:5px solid #00F;
+	display:none;
+	background-color:#FFF;
+	margin:0px auto;
+	text-align:center;
+	margin-top:100px;
+	}	
+#banklist img{
+	cursor:pointer;
+	}	
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:fktop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+<span style="font-size:13px; color:#00F">【单笔最小提款金额：<span style="color:#0C3; font-size:15px;"><{$minmoney}></span> 元&nbsp;&nbsp;
+      单笔最大提款金额：<span style="color:#0C3; font-size:15px;"><{$maxmoney}></span> 元&nbsp;&nbsp;每天可提款总金额：<span style="color:#0C3; font-size:15px;"><{$mtsxmoney}></span>&nbsp;&nbsp;每天提款最大次数：<span style="color:#0C3; font-size:15px;"><{$mttkcs}></span> 次】</span>
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+  <br>
+   <div id="txtitle">
+      <div style="width:800px; font-size:13px; border:0px;">
+      可用余额：<span style="font-size:25px; color:#F00;"><{$mymoney}></span> 元&nbsp;&nbsp;&nbsp;&nbsp;今天已申请提款总金额：<span style="color:#F00"><{$yqlmoney}></span> 元&nbsp;&nbsp;&nbsp;&nbsp;
+      今天已申请提款：<span style="color:#F00"><{$dttkcs}></span> 次
+      </div>
+   </div>
+
+  <hr>
+  
+  <div id="txcontent">
+  
+ <if condition="$tkif == 1">
+ 
+     <volist name="listbank" id="vo">
+      <div class="selectclass"><input type="button" value="不提款" onclick="javascript:btk(this)" moneyid="<{$vo.id}>">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#06F;"><{$vo.BankCompellation}></span>【<span style="color:#090"><{$vo.BankName}></span>】&nbsp;&nbsp;&nbsp;&nbsp;请输入提款金额：<input type="text" moneyid="<{$vo.id}>" class="moneyclass" onkeyup="clearNoNum(this);" />&nbsp;&nbsp;
+      <select name="T" class="TT" id="T<{$vo.id}>" style="font-size:20px; vertical-align:middle;" moneyid="<{$vo.id}>">
+         <option value="1">T + 1</option>
+         <if condition="$t0 == 1">
+         <option value="0">T + 0</option>
+        </if>
+      </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      手续费：<span id="sxf_money<{$vo.id}>" style="color:#F60; font-weight:bold;"></span> 元&nbsp;&nbsp;&nbsp;&nbsp;实际到账：<span id="sj_money<{$vo.id}>" style="color:#F60; font-weight:bold;"></span> 元
+      </div>
+     </volist> 
+     
+     <div class="selectclass" style="font-size:20px; font-weight:bold; color:#00F; text-align:center;">
+     请输入支付密码： <input type="password" name="paypassword" id="paypassword" class="zfmminput" style="width:300px; color:#00F">
+     </div>
+     
+     <div class="selectclass" style="text-align:center;">
+         <img src="/Public/User/images/sqtk.gif" style="vertical-align:middle; margin-top:10px; cursor:pointer;" onclick="javascript:sqtk()" id="sqtkbutton">
+     </div>
+   <else />
+        <if condition="$tkiflx == 0">
+    <p style="font-size:30px; color:#F00; margin-top:100px; margin-left:120px;">您今天已经申请提款 <{$mttkcs}> 次,超过当天最大申请提款次数！</p>
+        <else />
+   <p style="font-size:30px; color:#F00; margin-top:100px; margin-left:380px;">未开启委托批量结算!</p>  
+        </if>
+   </if>  
+     
+  </div>
+  
+</div>
+
+
+</div>
+ <input type="hidden" name="minmoney" id="minmoney" value="<{$minmoney}>">
+   <input type="hidden" name="maxmoney" id="maxmoney" value="<{$maxmoney}>">
+   <input type="hidden" name="mtsxmoney" id="mtsxmoney" value="<{$mtsxmoney}>">
+   <input type="hidden" name="yqlmoney" id="yqlmoney" value="<{$yqlmoney}>">
+   
+      <input type="hidden" name="mymoney" id="mymoney" value="<{$mymoney}>">
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+<div id="banklist">
+   正在处理中，请稍后......
+</div>
+</body>
+</html>

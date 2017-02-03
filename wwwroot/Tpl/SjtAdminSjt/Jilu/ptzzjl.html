@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/My97DatePicker/WdatePicker.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#SearchButton").click(function(e) {
+        window.location.href = "/SjtAdminSjt_Jilu_ptzzjl.html?sq_date="+$("#sq_date").val()+"&sq_date_js="+$("#sq_date_js").val()+"&pagepage="+$("#pagepage").val();
+    });
+	
+	 $("#xzxz").click(function(e) {
+        if(parseInt($(this).attr("xz")) == 0){
+		    $(this).attr("xz",1);
+			$("#listuser input[type='checkbox']").attr("checked",true);
+		}else{
+			$(this).attr("xz",0);
+			$("#listuser input[type='checkbox']").attr("checked",false);
+		}
+    });
+});
+
+function xgtz(TransID){
+	if(confirm("您确认要重新发送后台通知吗？") == true){
+			  $.ajax({
+			  type:"POST",
+			  url:"/SjtAdminSjt_Jilu_xgtz.html",
+			  data:"TransID="+TransID,
+			  timeout:2000,
+			  dataType:"text",
+			  success: function(str){
+				 if(str == "ok"){
+				 	alert("已成功提交重新发送后台通知请求！");
+				 }else{
+				    alert("提交重新发送后台通知失败！");
+				 }
+			  },
+			  error:function(){
+				  //alert("处理失败！");
+			  }
+		  });
+	}
+}
+</script>
+<style type="text/css">
+.selectclass{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-align:left;
+	font-size:15px;
+	margin:0px auto;
+	border-bottom:1px dashed #999999;
+	}
+.selectclass table{
+	width:100%;
+	height:50px;
+	}
+
+.selectclass table tr td{
+	width:9%;
+	height:50px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:12px;
+	}	
+</style>
+</head>
+
+<body>
+ <div class="selectclass" style="height:auto;">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+    <!--  <td>当日总额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daymoney}></span> 元</td>
+      <td>当日实收金额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daysjmoney}></span> 元</td>-->
+      <td>当日成功转账：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daynum}></span> 笔</td>
+      <td>当日利润：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daylrmoney}></span> 元</td>
+      </tr>
+      <tr>
+     <!-- <td>昨日总额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$zmoney}></span> 元</td>
+      <td>昨日实收金额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$zsjmoney}></span> 元</td>-->
+      <td>昨日成功转账：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$znum}></span> 笔</td>
+      <td>昨日利润：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$zlrmoney}></span> 元</td>
+      </tr>
+      </table>
+      </div>
+      <div class="listmenu" style="text-align:left; display:none;">
+      请输入商户编号：<input type="text" size="20" name="shbh" id="shbh">&nbsp;&nbsp;&nbsp;&nbsp;
+      请输入订单号：<input type="text" size="20" name="ddh" id="ddh">&nbsp;&nbsp;&nbsp;&nbsp;
+      请输入卡号：<input type="text" size="20" name="kahao" id="kahao">
+      </div>
+<div class="listmenu" style="text-align:right;">
+交易时间（开始）：<input type="text" name="sq_date" id="sq_date" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:false})" style="width:100px;" value="<{$Think.get.sq_date}>">&nbsp;&nbsp;&nbsp;&nbsp;
+交易时间（结束）：<input type="text" name="sq_date_js" id="sq_date_js" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:false})" style="width:100px;" value="<{$Think.get.sq_date_js}>">&nbsp;&nbsp;&nbsp;&nbsp;
+<!--交易类型：
+<select name="typepay" id="typepay">
+    <option value="">全部</option>
+    <option value="2">点卡订单</option>
+    <option value="4">点卡收款</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+择状态：
+<select name="zt" id="zt">
+    <option value="">全部</option>
+    <option value="0">未处理</option>
+    <option value="1">成功</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+每页数据：
+<select name="pagepage" id="pagepage">
+<option value="10">10条</option>
+<option value="15">15条</option>
+<option value="20">20条</option>
+<option value="25">25条</option>
+<option value="30">30条</option>
+<option value="35">35条</option>
+<option value="40">40条</option>
+<option value="45">45条</option>
+<option value="50">50条</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="搜 索" id="SearchButton">
+<script type="text/javascript">
+$("#zt").val(<{$Think.get.zt}>);
+$("#typepay").val(<{$Think.get.typepay}>);
+$("#pagepage").val(<{$Think.get.pagepage}>);
+</script>
+</div>
+<table cellpadding="0" cellspacing="0" border="0" id="listuser">
+<tr style="background-color:#5d7b9d; color:#fff;">
+<td id="xzxz" xz="0" style="cursor:pointer;">选择</td>
+
+<td>转出商户编号</td>
+<td>转入商户编号</td>
+<td>转账金额</td>
+<td>手续费</td>
+<td>到账金额</td>
+<td>转账时间</td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+<td><input type="checkbox" class="xzxz" name="xz" value="<{$vo.id}>"></td>
+<td><{$vo["UserID"]+10000}>&nbsp;</td>
+<td style="color:#0C0"><{$vo["Username"]+10000}></td>
+<td><{$vo["sxfmoney"] + $vo["OrderMoney"]}>&nbsp;</td>
+<td><{$vo.sxfmoney}>&nbsp;</td>
+<td><{$vo.OrderMoney}>&nbsp;</td>
+<td style="color:#F30"><{$vo.TradeDate}>&nbsp;</td>
+</tr>
+</volist>
+<tr>
+<td colspan="20"><{$page}></td>
+</tr>
+</table>
+</body>
+</html>

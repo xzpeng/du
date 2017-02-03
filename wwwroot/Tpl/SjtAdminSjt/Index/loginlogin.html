@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>后台管理登录</title>
+		<link rel="stylesheet" type="text/css" href="/Public/css/bootstrap.min.css"/>
+        <script src="/Public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/Public/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+function check(){
+	
+	if($("#UserName").val() == ""){
+		alert("用户名不能为空！");
+		$("#UserName").focus();
+		return false;
+	}
+	
+	if($("#PassWord").val() == ""){
+		alert("密码不能为空！");
+		$("#PassWord").focus();
+		return false;
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////////
+	$.ajax({
+			type:'POST',
+			url:"/SjtAdminSjt_Sjtadminsjt_denglu.html",
+			data:"UserName="+ $("#UserName").val() + "&PassWord=" + $("#PassWord").val(),
+			dataType:'text',
+			success:function(str){
+				if(str == "ok"){
+					//alert("登录成功!");
+					location.href = "/SjtAdminSjt";
+					//location.href = "/".C("ADMIN_NAME");
+				}else{
+					
+					alert("账号或密码错误！"+str);
+					
+					}
+				///////////////////////////////////
+				},
+			error:function(str){
+				//////////////////////////
+				}	
+			});
+	////////////////////////////////////////////////////////////////////
+	
+	return false;
+	
+}
+</script>
+        <style type="text/css">
+			body{
+				width:100%;
+				height:100%;
+				background-image:url(/Public/SjtAdminSjt/images/bg.jpg);
+				overflow-x:hidden;
+				overflow-y:hidden;
+			}
+		</style>
+	</head>
+	<body>
+
+<div class="panel panel-default" style="width: 400px; margin: 0px auto; margin-top: 150px; font-family: '微软雅黑';">
+	<div class="panel-heading"><span class="glyphicon glyphicon-user"></span> 管理员登录</div>
+  <div class="panel-body">
+    <form name="Form1" method="post" action="" onsubmit="return check()">
+      <div class="panel-body">
+        <div class="form-group has-default">
+           <div class="input-group">
+		      <div class="input-group-addon">用户名：</div>
+		      <input type="text" class="form-control" name="UserName" id="UserName">
+		    </div>
+        </div>
+        <div class="form-group has-default">
+          <div class="input-group">
+		      <div class="input-group-addon">密码：</div>
+		      <input type="password" class="form-control" name="PassWord" id="PassWord" >
+		    </div>
+        </div>
+       
+       
+        <div class="form-group has-default">
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="loginbutton" data-loading-text="正在处理中...">登 录</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+	</body>
+</html>

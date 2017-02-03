@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+.zcx{
+	width:478px;
+    height:231px;
+	border:1px solid #a9becf;
+    float:left;
+	background-color:#E6EDFB
+	}
+
+.regtitle{
+	width:80%; 
+	text-align:left; 
+	font-size:18px;
+	margin:0px auto;
+	margin-top:10px;
+	}
+.reginput{ 
+	height:50px; 
+	line-height:50px; 
+	text-indent:0px;
+	position:relative;
+	}	
+.errordiv{
+	width:300px;
+	height:40px;
+	line-height:40px;
+	border:1px solid #000;
+	position:absolute;
+	left:385px;
+	top:4px;
+	background-color:#F2F2F2;
+	color:#F00;
+	text-align:left;
+	text-indent:10px;
+	font-size:15px;
+	font-weight:bold;
+	display:none;
+	}		

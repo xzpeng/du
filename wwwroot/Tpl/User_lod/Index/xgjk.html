@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>央联付会员管理后台</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/wyjyjl.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+	
+$("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(0)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(5)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(5) a").css("color","#F60");
+	
+});
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:800px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:auto;
+	}	
+	
+.selectclass{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-align:left;
+	font-size:15px;
+	margin:0px auto;
+	border-bottom:1px dashed #999999;
+	}
+.selectclass table{
+	width:100%;
+	height:50px;
+	}
+
+.selectclass table tr td{
+	width:20%;
+	height:50px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:12px;
+	}	
+.selectclass a{
+	font-size:13px;
+	color:#333;
+	}
+.selectclass a:hover{
+	
+	}
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:shjktop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;修改接口
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+
+  
+  <div id="txcontent">
+      
+     
+      
+      
+  
+   
+     
+      <div class="selectclass">
+     &nbsp;&nbsp;&nbsp;&nbsp;您现在的使用的接口是：<span style="font-weight:bold; color:#F00"><{$myapiname}></span>
+      </div>
+      <div class="selectclass">
+      <form name="from1" method="post" action="/User_Index_xgjkedit.html">
+     &nbsp;&nbsp;&nbsp;&nbsp;请你选择接口：
+     <select name="xgjk" id="xgjk">
+       <option value="0">使用系统设置接口(<{$mrapiname}>)</option>
+       <volist name="Sjapilist" id="vo">
+       <option value="<{$vo.id}>"><{$vo.myname}></option>
+       </volist>
+     </select>&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="submit" value="确认修改">
+     </form>
+      </div>
+      
+    
+     
+  </div>
+  
+</div>
+
+
+</div>
+ 
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+
+</body>
+</html>

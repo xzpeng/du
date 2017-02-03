@@ -1,0 +1,5 @@
+D:\Aspx\Apihhqi\bin\Debug\Apihhqi.dll
+D:\Aspx\Apihhqi\bin\Debug\Apihhqi.pdb
+D:\Aspx\Apihhqi\obj\Debug\ResolveAssemblyReference.cache
+D:\Aspx\Apihhqi\obj\Debug\Apihhqi.dll
+D:\Aspx\Apihhqi\obj\Debug\Apihhqi.pdb

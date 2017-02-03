@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE><{:C("WEB_NAME")}>平台|第三方支付平台|在线支付平台|传奇支付平台|游戏支付平台|自动发卡平台|API支付平台|T+0三方支付平台|在线支付平台</TITLE>
+<css href='/Public/css/defaultcss.css' />
+
+<js href='/Public/js/jquery-1.7.2.js' />
+<js href='/Public/js/floatDiv.js' />
+
+<js href='/Public/js/js.js' />
+<script type="text/javascript">
+var lunhuannum = 3;
+var arrayList = Array(3);
+arrayList[0] = "1";
+arrayList[1] = "2";
+arrayList[2] = "3";
+$(document).ready(function(e) {
+    $("#qydl").click();
+	$("#mbkcontent").floatdiv("middle");
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	$(".hzsh a").html("<img src='/Public/images/b.gif'>");
+	$(".hzsh").each(function(index, element) {
+		tops = parseInt(index / 9) * 27;
+		lefts = (index - parseInt(index / 9)*9) * 50;
+		$(this).css("background-position","-"+lefts+"px "+tops+"px");
+    });
+	
+	
+	$(".menu_div_div:eq(0)").css({"background-image":"url(/Public/images/sbgb.jpg)"}).attr("name","a");
+	$(".menu_div_div:eq(0) a").css("color","#11638b");
+	
+	
+	window.setInterval("lunhuan()",5000);
+	
+	//$("#menu_div div").click(function(e) {
+//        window.location.href = $(this).children("a").attr("href");
+//    });
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+});
+
+function lunhuan(){
+	
+	lunhuannum = lunhuannum + 1;
+	if(lunhuannum >= 3){
+		lunhuannum = 0;
+		}
+	//alert("default_bg"+arrayList[lunhuannum]+".jpg)");
+	$("#default_bigimg_bg").css("background-image","url(/Public/images/default_bg"+arrayList[lunhuannum]+".jpg)");	
+	$("#default_content").css("background-image","url(/Public/images/default_img_bg"+arrayList[lunhuannum]+".gif)");	
+	//alert("sdagsagd");
+	}
+</script>
+</head>
+
+<body>
+<include file="Index:Top" />
+
+<div id="default_bigimg_bg">
+     <div id="default_content">
+    <!-- <div style="height:70px;"></div>-->
+       <div style="width:700px; height:400px; float:left;">
+       
+       </div>
+        <!--------------------------------------------------------------------------------->
+      
+       <div style="width:289px; height:400px; float:left;">
+            <div style="height:70px;"></div>
+        <div style="width:289px; height:250px; border:1px solid #a9becf;" id="regdiv">
+
+
+ <div id="login_title">
+      <div id="qydl">企业登录</div>
+      <div id="grdl">个人登录</div>
+    </div>
+
+<!-------------------------------------------------------------->
+    <div id="login_Content_qyyh">
+    <form name="Form1" method="post" action="" onsubmit="return check();">
+        <input type="hidden" name="mbk" id="mbk" value="">
+     
+        <div style="margin-top:0px; width:100%;">
+        
+        <div class="zydiv"><div style="width:45%; float:left;">&nbsp;&nbsp;&nbsp;&nbsp;账&nbsp;&nbsp;&nbsp;&nbsp;户：</div><div style="width:46%; float:left; text-align:right;"><a href="/Index_jhzh.html" style="text-decoration:none; color:#3584c5; font-size:12px;">激活账号</a></div></div>
+        <div class="zydiv">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputtext" name="UserName" id="UserName" style="width:250px; font-size:16px;"></div>
+        
+        </div>
+        <div style="width:100%;">
+        
+        <div class="zydiv"><div style="width:45%; float:left;">&nbsp;&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码：</div><div style="width:46%; float:left; text-align:right;"><a href="/Index_mmzh.html" style="text-decoration:none; color:#3584c5; font-size:12px;">忘记密码?</a></div></div>
+        <div class="zydiv">&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" class="inputtext" name="LoginPassWord" id="LoginPassWord" style="width:250px; font-size:16px;"></div>
+        
+        </div>
+        <div style="width:100%;">
+        
+        <div class="zydiv" style="margin-top:3px;">&nbsp;&nbsp;&nbsp;&nbsp;验&nbsp;证&nbsp;码：</div>
+        <div class="zydiv" style="margin-top:3px;">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputtext" style="width:50px; vertical-align:middle;" name="verify" id="verify">&nbsp;&nbsp;<img class="yzm" src='/Index_verify.html' style="vertical-align:middle;" onclick='javascript:$(".yzm").attr("src","/Index_verify_a"+ Math.random()+".html")' title="点击刷新验证码" />
+        <input type="hidden" name="UserTpye" id="UserType" value="1" /></div>
+        
+        </div>
+        <div style="height:55px; text-align:center;"><input type="image" src="/Public/images/qydl.png" style="vertical-align:top;" id="logintj">&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Index_regstep.shtml"><img src="/Public/images/reg.gif" style="border:0px;"></a></div>
+     </form>
+    </div>
+    <div id="login_bottom_reg" style="width:290px; display:none;"><a href="/Index_regstep.shtml"><img src="/Public/images/regh.gif" style="vertical-align:middle;"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Index_mmzh.html">忘记密码</a></div>
+   
+<!--------------------------------------------------------------------->
+</div>
+</div>
+</div>
+
+        <!--------------------------------------------------------------------------------->
+     </div>
+</div>
+
+<div class="ge" style="background-color:#95bc67;"></div>
+
+<div style="width:100%; background-color:#f9f9f9; background-image:url(/Public/images/default_minbg.jpg)">
+
+<div id="jf_div">
+  <div class="jf_div_bian" style="background-image:url(/Public/images/jf/left.gif)"></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/01.jpg"><div><a href="/Index_denglugr.html">手机充值</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/02.jpg"><div><a href="/Index_denglugr.html">固话宽带</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/03.jpg"><div><a href="/Index_denglugr.html">转账汇款</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/04.jpg"><div><a href="/Index_denglugr.html">提　现</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/05.jpg"><div><a href="/Index_denglugr.html">信用卡还款</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/06.jpg"><div><a href="/Index_denglugr.html">有线电视</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/07.jpg"><div><a href="/Index_denglugr.html">燃气费</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/08.jpg"><div><a href="/Index_denglugr.html">电费</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/09.jpg"><div><a href="/Index_denglugr.html">水费</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/10.jpg"><div><a href="/Index_denglugr.html">账户付款</a></div></div>
+  <div class="jf_div_content"><img src="/Public/images/jf/11.jpg"><div><a href="/Index_denglugr.html">我要收款</a></div></div>
+  <div class="jf_div_bian"><img src="/Public/images/jf/right.gif"></div>
+</div>
+ <div style="width:1002px; margin:0px auto;">
+        <div style="width:33%; height:auto; float:left;">
+        <a href="/Index_denglugr.html"><img src="/Public/images/default_z_4.jpg" style="border:0px;"></a>
+         <div style="height:10px;"></div>
+        </div>
+        <div style="width:33%; height:auto; float:left;">
+        <a href="/Index_denglugr.html"><img src="/Public/images/default_z_5.jpg" style="border:0px;"></a>
+         <div style="height:10px;"></div>
+        </div>
+        <div style="width:33%; height:auto; float:left;">
+         <a href="/Index_denglugr.html"><img src="/Public/images/default_z_6.jpg" style="border:0px;"></a>
+          <div style="height:10px;"></div>
+        </div>
+    </div>
+<!---------------------------------------------------------------------------------------->
+<div id="news">
+ <div id="sjtgg">
+    <div class="newstitle">
+    
+    <div style="float:left; width:50%; height:36; line-height:36px;">&nbsp;&nbsp;&nbsp;&nbsp;动态</div><div style="float:left; width:50%; height:36; line-height:36px; text-align:right;"><a href="/Index_sjtdt.html" style="font-weight:normal; font-size:12px; text-decoration:none; color:#666">更多...</a></div>
+    
+    </div>
+    <div class="newscontent">
+           <!----------------------------------------------->
+      <volist name="listdt" id="vo">
+           <div class="newslist">♦ <a href="/Index_shownewsdt_newsid_<{$vo.id}>.html" target="_blank"><{$vo.title}></a></div>
+           </volist>
+           <!----------------------------------------------->
+    </div>
+ </div>
+ <div id="sjtxw">
+ <div class="newstitle">
+ 
+  <div style="float:left; width:50%; height:36; line-height:36px;">&nbsp;&nbsp;&nbsp;&nbsp;新闻</div><div style="float:left; width:50%; height:36; line-height:36px; text-align:right;"><a href="/Index_sjtxw.html" style="font-weight:normal; font-size:12px; text-decoration:none; color:#666">更多...</a></div>
+ 
+ </div>
+ <div class="newscontent">
+           <!----------------------------------------------->
+           <volist name="listxw" id="vo">
+           <div class="newslist">♦ <a href="/Index_shownewsxw_newsid_<{$vo.id}>.html" target="_blank"><{$vo.title}></a></div>
+           </volist>
+           <!----------------------------------------------->
+ </div>
+ </div>
+ <div id="sjthz" style="">
+ <div class="newstitle" style="">
+ 
+  <div style="float:left; width:50%; height:36; line-height:36px;">&nbsp;&nbsp;&nbsp;&nbsp;帮助</div><div style="float:left; width:50%; height:36; line-height:36px; text-align:right;"><a href="/Index_sjtcjwt.html" style="font-weight:normal; font-size:12px; text-decoration:none; color:#666">更多...</a></div>
+ 
+ </div>
+ <div class="newscontent" style="">
+ <!----------------------------------------------->
+           <volist name="listcjwt" id="vo">
+           <div class="newslist">♦ <a href="/Index_shownewsdt_newsid_<{$vo.id}>.html" target="_blank"><{$vo.title}></a></div>
+           </volist>
+           <!----------------------------------------------->
+ 
+ </div>
+ </div>
+</div>
+
+<div style="width:1002px; display:none; height:4px; margin:0px auto; border-bottom:1px solid #CCC"></div>
+<!---------------------------------------------------------------------------------------->
+<div style="width:1002px; margin:0px auto; display:none;">
+    <div style="width:33%; height:auto; float:left;">
+        <div style="height:40px;"></div>
+        <div><img src="/Public/images/default_z_1.jpg"></div>
+        <div style="font-size:25px; font-family:'黑体'; color:#666; height:45px; line-height:45px;">产品支付服务</div>
+        <div style="font-size:16px; color:#666; height:40px; line-height:40px;">余额支付 | 网银支付 | 点卡支付</div>
+        <div style="height:40px;"></div>
+    </div>
+    <div style="width:33%; height:auto; float:left;">
+          <div style="height:40px;"></div>
+        <div><img src="/Public/images/default_z_2.jpg"></div>
+        <div style="font-size:25px; font-family:'黑体'; color:#666; height:45px; line-height:45px;">资金清算服务</div>
+        <div style="font-size:16px; color:#666; height:40px; line-height:25px;">即时到账 | 信用中介 | 资金归集 |<br> 分账批量付款 | 代扣代发 | T+1 | T+0</div>
+        <div style="height:40px;"></div>
+    
+    </div>
+    <div style="width:33%; height:auto; float:left;">
+       
+       <div style="height:40px;"></div>
+        <div><img src="/Public/images/default_z_3.jpg"></div>
+        <div style="font-size:25px; font-family:'黑体'; color:#666; height:45px; line-height:45px;">行业解决方案</div>
+        <div style="font-size:16px; color:#666; height:40px; line-height:25px;">电子商务 | 生活缴费 | 国际外贸 | 大宗交易 | 炒股交易</div>
+        <div style="height:40px;"></div>
+        
+    </div>
+    
+</div>
+<!---------------------------------------------------------------------------------------->
+<div style="width:1002px; clear:left; height:2px; margin:0px auto; border-top:1px solid #CCC; clear:left;"></div>
+
+</div>
+
+<div style="clear:left"></div>
+
+<div style="width:100%; height:100px; background-color:#f9f9f9;">
+<!----------------------------------------------------------------------------------------->
+<div style="width:1002px; height:100px; margin:0px auto;">
+   <div style="width:598px; height:100px; float:left">
+       <div class="newstitle">&nbsp;&nbsp;&nbsp;&nbsp;<{:C("WEB_NAME")}>合作银行及机构</div>
+       <div class="newscontent">
+            <div class="hzimg" style="background-position:2px 0px;"></div>
+   <div class="hzimg" style="background-position:-18px 0px;"></div>
+   <div class="hzimg" style="background-position:-36px 0px; width:18px;"></div>
+   <div class="hzimg" style="background-position:-54px 0px;"></div>
+   <div class="hzimg" style="background-position:-74px 0px; width:18px;"></div>
+   <div class="hzimg" style="background-position:-92px 0px; width:14px;"></div>
+   <div class="hzimg" style="background-position:-106px 0px; width:20px;"></div>
+   <div class="hzimg" style="background-position:-126px 0px; width:18px;"></div>
+   <div class="hzimg" style="background-position:-144px 0px; width:18px;"></div>
+   <div class="hzimg" style="background-position:-148px 20px; width:18px;"></div>
+   <div class="hzimg" style="background-position:2px 20px;"></div>
+   <div class="hzimg" style="background-position:-18px 20px; width:18px;"></div>
+   <div class="hzimg" style="background-position:-36px 40px; width:19px;"></div>
+   <div class="hzimg" style="background-position:-54px 20px; width:19px;"></div>
+   <div class="hzimg" style="background-position:-74px 20px; width:17px;"></div>
+   <div class="hzimg" style="background-position:-92px 20px; width:17px;"></div>
+   <div class="hzimg" style="background-position:-109px 20px; width:18px;"></div>
+   <div class="hzimg" style="background-position:-127px 20px; width:20px;"></div>
+       </div>
+   </div>
+   <div style="width:394px; float:left; height:100px; margin-left:10px;">
+    <!------------------------------------------------------------------------------>
+     <div class="newstitle">&nbsp;&nbsp;&nbsp;&nbsp;合作企业</div>
+       <div class="newscontent">
+            <div><img src="/Public/images/002.gif"></div>
+       </div>
+    <!------------------------------------------------------------------------------>
+   </div>
+</div>
+<!----------------------------------------------------------------------------------------->
+</div>
+
+<include file="Index:bottom" />
+
+<div id="mbkcontent">
+</div>
+</body>
+</html>

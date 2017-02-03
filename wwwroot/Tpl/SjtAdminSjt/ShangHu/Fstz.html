@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$UserIDList}></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+     $("#plszwy").click(function(e) {
+        if($("#TZTitle").val() == "" || $("#TZContent").val() == ""){
+			alert("通知标题或内容不能为空！");
+		}else{
+			
+			//alert($("#TZContent").text());
+				  if(confirm("您确认要批量发送通知吗？")){
+					$.ajax({
+					type:'POST',
+					url:'/SjtAdminSjt_ShangHu_Pltongzhi.html',
+					data:"Title="+ $("#TZTitle").val()+"&TzContent="+$("#TZContent").val()+"&UserIDList=<{$UserIDList}>",
+					dataType:'text',
+					success:function(str){
+						  if(str == "ok"){
+							  alert("批量通知成功！");
+							  window.close();	
+						  }else{
+							  alert(str);
+							  }
+						},
+					error:function(){
+						alert("处理失败！");
+						}	
+					});
+			  }
+		}
+    });
+});
+</script>
+</head>
+
+<body>
+
+<table cellpadding="0" cellspacing="0" border="0" id="showshenhe">
+<tr>
+<td style="font-weight:bold">您选择的商户</td
+></tr>
+<tr>
+<td>
+<volist name="list" id="vo">
+<div>
+<{$vo.UserName}>
+</div>
+</volist>
+</td>
+</tr> 
+<tr>
+<td style="font-weight:bold">发送通知</td>
+</tr>
+<tr>
+<td style="height:40px;">
+通知标题：<input type="text" size="50" id="TZTitle">
+</td>
+</tr>
+<tr>
+<td style="height:auto;">
+通知内容：<textarea style="width:600px; height:200px;" id="TZContent"></textarea>
+</td>
+</tr>
+<tr>
+<td style="height:40px;">
+<input type="button" value="批量发送通知" id="plszwy">
+</td>
+</tr>
+</table>
+
+</body>
+</html>

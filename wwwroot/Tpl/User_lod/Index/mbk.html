@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(1)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(4)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(4) a").css("color","#F60");
+});
+
+function qytymbk(){
+	var msgstr = "";
+	if($("#mbk").val()==0){
+         msgstr = "您确认要停用密保卡吗？";
+	}else{
+		 msgstr = "您确认要启用密保卡吗？";
+	}
+	
+	if(confirm(msgstr)){
+		
+		 $.ajax({
+			  type:'POST',
+			  url:'/User_Index_mbkqty.html',
+			  data:"mbk="+ $("#mbk").val(),
+			  dataType:'text',
+			  success:function(str){
+				    if(str == "ok"){
+						alert("修改成功！");
+						if($("#mbk").val() == 1){
+							$(".mbkcontent").show();
+						}else{
+							$(".mbkcontent").hide();
+							}
+					}else{
+						alert("修改失败，请稍后再试！");
+					}
+				  },
+			  error:function(){
+				  alert("处理失败！");
+				  }	
+			  });
+	
+	}
+}
+
+function scmbk(){
+	
+	if(confirm("您确认要重新生成新的密保卡吗？")){
+		
+		location.href = "/User_Index_scmbk.html";
+		
+	}
+}
+
+</script>
+<style type="text/css">
+.tksxftab{
+	width:100%;
+	height:auto;
+	border-left:1px solid #CCC;
+	border-top:0px solid #CCC;
+	margin:0px auto;
+	font-size:13px;
+	
+	}
+.tksxftab tr td{
+	width:33.5%;
+	height:50px;
+	vertical-align:middle;
+	text-align:center;
+	font-size:20px;
+	/*color:#27a1d6;*/
+	font-weight:bold;
+	border-right:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	}	
+.tksxftab tr td span{
+	color:#F00;
+	}
+	
+#mbktab{
+	width:500px;
+	height:auto;
+	border-left:1px solid #000;
+	border-bottom:1px solid #000;
+	margin:0px auto;
+	}		
+#mbktab tr td{
+	width:50px;
+	height:50px;
+	border-right:1px solid #000;
+	border-top:1px solid #000;
+	}
+	
+.tdmbk{
+	/*color:#27a1d6;*/
+	}		
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:zhgl" />
+
+
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;密保卡
+</div>
+ 
+<div style="width:1000px; height:auto; margin:0px auto;">
+<table border="0" cellpadding="0" cellspacing="0" class="tksxftab">
+<tr>
+<td style="font-size:18px; color:#666; font-weight:bold; text-align:left; padding-left:20px;"> 
+是否启动用密保卡：
+<select name="mbk" id="mbk" style="font-size:20px;">
+   <option value="1">启用</option>
+   <option value="0">停用</option>
+</select>
+<script type="text/javascript">
+$("#mbk").val(<{$mbk}>);
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="/Public/User/images/bc.gif" style="vertical-align:middle; cursor:pointer;" onclick="qytymbk();">
+</td>
+</tr>
+
+<tr class="mbkcontent">
+<td>
+<img src="/Public/User/images/scmbk.gif" style="vertical-align:middle; cursor:pointer;" onclick="scmbk()">
+</td>
+</tr>
+
+<tr class="mbkcontent">
+<td style="height:auto; text-align:center;">
+     <br />
+     <if condition="$A1 neq ''">
+     <table border="0" cellpadding="0" cellspacing="0" id="mbktab">
+     <tr>
+     <td>&nbsp;</td>
+     <td style="color:#27a1d6;">A</td>
+     <td style="color:#27a1d6;">B</td>
+     <td style="color:#27a1d6;">C</td>
+     <td style="color:#27a1d6;">D</td>
+     <td style="color:#27a1d6;">E</td>
+     <td style="color:#27a1d6;">F</td>
+     <td style="color:#27a1d6;">G</td>
+     <td style="color:#27a1d6;">H</td>
+     <td style="color:#27a1d6;">I</td>
+     </tr>
+     <volist name="list" id="vo">
+     <tr>
+     <td style="color:#27a1d6;">1</td>
+     <td class="tdmbk"><{$vo.A1}></td>
+     <td class="tdmbk"><{$vo.B1}></td>
+     <td class="tdmbk"><{$vo.C1}></td>
+     <td class="tdmbk"><{$vo.D1}></td>
+     <td class="tdmbk"><{$vo.E1}></td>
+     <td class="tdmbk"><{$vo.F1}></td>
+     <td class="tdmbk"><{$vo.G1}></td>
+     <td class="tdmbk"><{$vo.H1}></td>
+     <td class="tdmbk"><{$vo.I1}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">2</td>
+     <td class="tdmbk"><{$vo.A2}></td>
+     <td class="tdmbk"><{$vo.B2}></td>
+     <td class="tdmbk"><{$vo.C2}></td>
+     <td class="tdmbk"><{$vo.D2}></td>
+     <td class="tdmbk"><{$vo.E2}></td>
+     <td class="tdmbk"><{$vo.F2}></td>
+     <td class="tdmbk"><{$vo.G2}></td>
+     <td class="tdmbk"><{$vo.H2}></td>
+     <td class="tdmbk"><{$vo.I2}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">3</td>
+     <td class="tdmbk"><{$vo.A3}></td>
+     <td class="tdmbk"><{$vo.B3}></td>
+     <td class="tdmbk"><{$vo.C3}></td>
+     <td class="tdmbk"><{$vo.D3}></td>
+     <td class="tdmbk"><{$vo.E3}></td>
+     <td class="tdmbk"><{$vo.F3}></td>
+     <td class="tdmbk"><{$vo.G3}></td>
+     <td class="tdmbk"><{$vo.H3}></td>
+     <td class="tdmbk"><{$vo.I3}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">4</td>
+     <td class="tdmbk"><{$vo.A4}></td>
+     <td class="tdmbk"><{$vo.B4}></td>
+     <td class="tdmbk"><{$vo.C4}></td>
+     <td class="tdmbk"><{$vo.D4}></td>
+     <td class="tdmbk"><{$vo.E4}></td>
+     <td class="tdmbk"><{$vo.F4}></td>
+     <td class="tdmbk"><{$vo.G4}></td>
+     <td class="tdmbk"><{$vo.H4}></td>
+     <td class="tdmbk"><{$vo.I4}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">5</td>
+     <td class="tdmbk"><{$vo.A5}></td>
+     <td class="tdmbk"><{$vo.B5}></td>
+     <td class="tdmbk"><{$vo.C5}></td>
+     <td class="tdmbk"><{$vo.D5}></td>
+     <td class="tdmbk"><{$vo.E5}></td>
+     <td class="tdmbk"><{$vo.F5}></td>
+     <td class="tdmbk"><{$vo.G5}></td>
+     <td class="tdmbk"><{$vo.H5}></td>
+     <td class="tdmbk"><{$vo.I5}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">6</td>
+     <td class="tdmbk"><{$vo.A6}></td>
+     <td class="tdmbk"><{$vo.B6}></td>
+     <td class="tdmbk"><{$vo.C6}></td>
+     <td class="tdmbk"><{$vo.D6}></td>
+     <td class="tdmbk"><{$vo.E6}></td>
+     <td class="tdmbk"><{$vo.F6}></td>
+     <td class="tdmbk"><{$vo.G6}></td>
+     <td class="tdmbk"><{$vo.H6}></td>
+     <td class="tdmbk"><{$vo.I6}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">7</td>
+     <td class="tdmbk"><{$vo.A7}></td>
+     <td class="tdmbk"><{$vo.B7}></td>
+     <td class="tdmbk"><{$vo.C7}></td>
+     <td class="tdmbk"><{$vo.D7}></td>
+     <td class="tdmbk"><{$vo.E7}></td>
+     <td class="tdmbk"><{$vo.F7}></td>
+     <td class="tdmbk"><{$vo.G7}></td>
+     <td class="tdmbk"><{$vo.H7}></td>
+     <td class="tdmbk"><{$vo.I7}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">8</td>
+     <td class="tdmbk"><{$vo.A8}></td>
+     <td class="tdmbk"><{$vo.B8}></td>
+     <td class="tdmbk"><{$vo.C8}></td>
+     <td class="tdmbk"><{$vo.D8}></td>
+     <td class="tdmbk"><{$vo.E8}></td>
+     <td class="tdmbk"><{$vo.F8}></td>
+     <td class="tdmbk"><{$vo.G8}></td>
+     <td class="tdmbk"><{$vo.H8}></td>
+     <td class="tdmbk"><{$vo.I8}></td>
+     </tr>
+      <tr>
+     <td style="color:#27a1d6;">9</td>
+     <td class="tdmbk"><{$vo.A9}></td>
+     <td class="tdmbk"><{$vo.B9}></td>
+     <td class="tdmbk"><{$vo.C9}></td>
+     <td class="tdmbk"><{$vo.D9}></td>
+     <td class="tdmbk"><{$vo.E9}></td>
+     <td class="tdmbk"><{$vo.F9}></td>
+     <td class="tdmbk"><{$vo.G9}></td>
+     <td class="tdmbk"><{$vo.H9}></td>
+     <td class="tdmbk"><{$vo.I9}></td>
+     </tr>
+     </volist>
+     </table>
+     <br />
+<div style="width:100%; height:40px; line-height:40px;">
+<img src="/Public/User/images/ncwtp.gif" onclick="javascript:window.open('/User_Index_ncwmbk.html')">
+</div>  
+</if>   
+</td>
+</tr>
+</table>
+<if condition="$mbk == 0">
+<script type="text/javascript">
+$(".mbkcontent").hide();
+</script>
+</if>
+</div>
+
+
+
+<include file="Index:foot" />
+
+</body>
+</html>

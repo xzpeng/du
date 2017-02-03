@@ -1,0 +1,21 @@
+<div style="width:100%; height:40px; line-height:40px; font-size:15px; text-align:center;">请参照您的密保卡输入对应的数字,不需要输入空格<span style="color:#F00">【<{$Think.session.mbk}>】</span></div>
+<div style="width:100%; height:40px; line-height:40px; text-align:center;">
+<input type="text" size="20" name="mbkmbk" id="mbkmbk">&nbsp;&nbsp;<img src="/Public/User/images/queren.gif" onclick="ok()" style="vertical-align:middle">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Public/images/gb.gif" onClick="gb()" style="vertical-align:middle;">
+</div>
+<script type="text/javascript">
+function ok(){
+	if($("#mbkmbk").val() == ""){
+		alert("请参照您的密保卡输入对应的数字！");
+	}else{
+		$("#mbkcontent").hide();
+		$("#mbk").val($("#mbkmbk").val());
+		document.Form1.onsubmit();
+		}
+}
+
+function gb(){
+	
+	$("#mbkcontent").load("/Index_gbmbk.html").hide();
+	}
+
+</script>

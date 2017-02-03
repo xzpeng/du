@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/wyjyjl.js' />
+<js href='/Public/My97DatePicker/WdatePicker.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+	
+   $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(2)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(6)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(6) a").css("color","#F60");
+});
+
+function check(){
+	if($("#ksjy_date").val() == ""){
+	    alert("请选择交易开始时间");
+		//$("#ksjy_date").focus();
+		return false;
+	}
+	
+	if($("#jsjy_date").val() == ""){
+	    alert("请选择交易结束时间");
+		//$("#jsjy_date").focus();
+		return false;
+	}
+}
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:800px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:auto;
+	text-align:center;
+	}	
+	
+.selectclass{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-size:15px;
+	margin:0px auto;
+	
+	}
+.selectclass table{
+	width:50%;
+	border:2px solid #999;
+	}
+
+.selectclass table tr td{
+	height:50px;
+	text-align:left;
+	vertical-align:middle;
+	font-size:12px;
+	padding-left:5px;
+	}	
+.selectclass a{
+	font-size:13px;
+	color:#333;
+	}
+.selectclass a:hover{
+	
+	}
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:jyjltop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;交易记录统计
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+
+  
+  <div id="txcontent">
+      
+      <form name="Form1" id="Form1" method="post" action="/User_Index_jltj.html" onsubmit="return check()">
+      
+      <div class="selectclass" style="height:auto;"><br><br>
+      <table border="0" cellpadding="0" cellspacing="0" style="margin:0px auto">
+       <tr>
+       <td colspan="3">交易时间：<input type="text" name="ksjy_date" id="ksjy_date" class="Wdate" value="<{$ksjy_date}>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:true})" style="width:100px;">&nbsp;&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="jsjy_date" id="jsjy_date" value="<{$jsjy_date}>"  class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:true})" style="width:100px;"></td>
+       </tr>
+       <tr><td colspan="3">交易类型：
+       <select id="jylx" name="jylx">
+       <option value="">全 部</option>
+       <option value="0">网银订单</option>
+       <option value="1">网银充值</option>
+
+       </select>&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="submit" value="搜 索">
+       <script type="text/javascript">
+	   $("#jylx").val('<{$jylx}>');
+	   </script>
+       </td></tr>
+       <tr>
+        <td>总额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daymoney}></span> 元</td>
+      <td>实收金额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daysjmoney}></span> 元</td>
+      <td>成功订单：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daynum}></span> 笔</td>
+       </tr>
+      </table><br><br />
+      </div>
+      
+      
+   </form>
+    
+     
+  </div>
+  
+</div>
+
+
+</div>
+ 
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+
+</body>
+</html>

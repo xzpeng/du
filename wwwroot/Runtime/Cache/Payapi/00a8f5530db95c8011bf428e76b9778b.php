@@ -1,0 +1,252 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>在线充值</title>
+<link href="/Public/prepay/base1.css" rel="stylesheet">
+<link href="/Public/prepay/asyncbox.css" rel="stylesheet">
+<style type="text/css">
+.content {
+	width: 750px;
+	padding-bottom: 30px;
+	font-family: "微软雅黑", "宋体";
+}
+
+/*充值方式*/
+.pay-title {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-bottom: 1px solid #eee;
+}
+
+.choose-bank {
+	margin: 20px 0 0 66px;
+}
+
+.bank-item {
+	float: left;
+	display: inline;
+	height: 45px;
+	margin: 10px 20px 0 0;
+	line-height: 45px;
+}
+
+.bank-radio {
+	float: left;
+	width: 14px;
+	overflow: hidden;
+	margin-top: 15px;
+	vertical-align: middle;
+}
+
+.bank-label {
+	float: left;
+	display: inline;
+	width: 180px;
+	height: 43px;
+	overflow: hidden;
+	margin-left: 5px;
+	text-indent: -9999em;
+	border: 1px solid #d8d8d8;
+	cursor: pointer;
+}
+
+.bank-label.select {
+	border-color: #c00;
+}
+/*银行LOGO*/
+
+.icbc {
+	background: url(/Public/prepay/bank/ICBC-NET-B2C.png) no-repeat;
+}
+
+.ccb {
+	background: url(/Public/prepay/bank/CCB-NET-B2C.png) no-repeat;
+}
+
+.abc {
+	background: url(/Public/prepay/bank/ABC-NET-B2C.png) no-repeat;
+}
+
+.cmbchina {
+	background: url(/Public/prepay/bank/CMBCHINA-NET-B2C.png) no-repeat;
+}
+
+.boc {
+	background: url(/Public/prepay/bank/BOC-NET-B2C.png) no-repeat;
+}
+
+.boco {
+	background: url(/Public/prepay/bank/BOCO-NET-B2C.png) no-repeat;
+}
+
+.pingan {
+	background: url(/Public/prepay/bank/PINGANBANK-NET.png) no-repeat;
+}
+
+.spdb {
+	background: url(/Public/prepay/bank/SPDB-NET-B2C.png) no-repeat;
+}
+
+.cmbc {
+	background: url(/Public/prepay/bank/CMBC-NET-B2C.png) no-repeat;
+}
+
+.bccb {
+	background: url(/Public/prepay/bank/BCCB-NET-B2C.png) no-repeat;
+}
+
+.gdb {
+	background: url(/Public/prepay/bank/GDB-NET-B2C.png) no-repeat;
+}
+
+.cbhb {
+	background: url(/Public/prepay/bank/CBHB-NET-B2C.png) no-repeat;
+}
+
+.ceb {
+	background: url(/Public/prepay/bank/CEB-NET-B2C.png) no-repeat;
+}
+
+.cib {
+	background: url(/Public/prepay/bank/CIB-NET-B2C.png) no-repeat;
+}
+
+.ecitic {
+	background: url(/Public/prepay/bank/ECITIC-NET-B2C.png) no-repeat;
+}
+
+.nbcb {
+	background: url(/Public/prepay/bank/NBCB-NET-B2C.png) no-repeat;
+}
+
+.post {
+	background: url(/Public/prepay/bank/POST-NET-B2C.png) no-repeat;
+}
+
+.sdb {
+	background: url(/Public/prepay/bank/SDB-NET-B2C.png) no-repeat;
+}
+
+.chinapay {
+	background: url(/Public/prepay/bank/chinapay.png) no-repeat;
+}
+
+.huifu {
+	background: url(/Public/prepay/bank/huifu.png) no-repeat;
+}
+
+/*充值金额*/
+#pcbNum {
+	width: 100px;
+}
+
+.payMoney {
+	margin-top: 30px;
+}
+.alipay {
+	background: url(/Public/prepay/bank/alipay.png) no-repeat;
+}
+.wechat {
+	background: url(/Public/prepay/bank/wechat.png) no-repeat;
+}
+.qqbao {
+	background: url(/Public/prepay/bank/qqqianbao.jpg) center no-repeat;
+}
+.tenpay {
+	background: url(/Public/prepay/bank/tenpay.jpg) center no-repeat;
+}
+</style>
+</head>
+<body>
+	<div class="content">
+		<div class="hd">在线支付</div>
+		<form name="Form1" id="Form1" method="post" action="<?php echo ($tjurl); ?>" accept-charset="UTF-8">
+			<input type="hidden" name="p0_Cmd" value="Buy"> <input type="hidden" name="p1_MerId" value="<?php echo ($p1_MerId); ?>"> <input type="hidden" name="p2_Order" value="<?php echo ($p2_Order); ?>"> <input type="hidden" name="p3_Amt" value="<?php echo ($p3_Amt); ?>"> <input type="hidden" name="p4_Cur" value="CNY"> <input type="hidden" name="p5_Pid" value="<?php echo ($p5_Pid); ?>"> <input type="hidden" name="p6_Pcat" value="<?php echo ($p6_Pcat); ?>"> <input type="hidden" name="p7_Pdesc" value="<?php echo ($p7_Pdesc); ?>"> <input type="hidden" name="p8_Url" value="<?php echo $p8_Url?>"> <input type="hidden" name="p9_SAF" value="0"> <input type="hidden" name="pa_MP" value="<?php echo ($pa_MP); ?>"> <input type="hidden" name="pd_FrpId" value="<?php echo ($pd_FrpId); ?>"> <input type="hidden"
+				name="pr_NeedResponse" value="<?php echo ($pr_NeedResponse); ?>"> <input type="hidden" name="Sjt_Paytype" value="b"> <input type="hidden" name="fhlx" value="huaqi"> <input type="hidden" name="Sjt_UserName" value="<?php echo ($Sjt_UserName); ?>"> <input type="hidden" name="hmac" value="<?php echo ($hmac); ?>"> <input type="hidden" name="tjurl" value="<?php echo ($tjurla); ?>">
+			<div class="from-item payMoney group">
+					<label for="pcbNum" class="label fb">充值金额：</label> 
+					<input type="hidden" name="total" value="<?php echo ($p3_Amt); ?>" id="pcbNum" class="input" style="height: 28px; width: 112px;">
+					<span style="height: 28px; width: 112px;color:red;font-weight:bold;font-size:18px;"><?php echo ($p3_Amt); ?></span>
+					<span class="pl5">元</span>
+				</div>
+
+			<div class="from-item payMoney group">
+					<label for="pcbNum" class="label fb">订单号：</label> 
+					<input type="hidden" name="total" value="<?php echo ($p2_Order); ?>" id="pcbNum" class="input" style="height: 28px; width: 112px;">
+					<span style="height: 28px; width: 112px;color:red;font-weight:bold;font-size:18px;"><?php echo ($p2_Order); ?></span>
+				</div>
+			<fieldset>
+				<legend>在线支付</legend>
+				<div class="from-item group">
+					<!--<h2 class="f14 fb pay-title mt10">充值方式：</h2>-->
+					<ul class="choose-bank" id="J_ChooseBank">
+		        <li class="bank-item group" title="银联在线"><input checked="checked" class="bank-radio" name="PayBank" type="radio" value="20" id="chinapay"><label class="bank-label chinapay" for="chinapay">银联在线</label></li>
+						
+                        <li class="bank-item group" title="支付宝"><input checked="checked" class="bank-radio" name="PayBank" type="radio" value="2" id="alipay"><label class="bank-label alipay" for="alipay">支付宝</label></li>
+			
+                        <li class="bank-item group" title="微信"><input class="bank-radio" name="PayBank" type="radio" value="22" id="wechat"><label class="bank-label wechat" for="wechat">微信</label></li>
+                        
+                        <li class="bank-item group" title="qq钱包"><input class="bank-radio" name="PayBank" type="radio" value="21" id="qqbao"><label class="bank-label qqbao" for="qqbao">QQ钱包</label></li>
+                       
+                        
+                        
+					</ul>
+				</div>
+				<!-- 充值方式 End -->
+			
+				<div class="btn-area" style="margin-top: 48px;">
+					<button type="submit" class="btn" id="J_Pay">确定</button>
+				    <input name="typego" value="pc" type="hidden" />
+                </div>
+			</fieldset>
+		</form>
+	</div>
+	<script type="text/javascript" src="/Public/prepay/jquery-min.js"></script>
+	<script type="text/javascript" src="/Public/prepay/AsyncBox.v1.4.5.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var $label = $("#J_ChooseBank").find("label");
+			var $radio = $("#J_ChooseBank").find("input.bank-radio");
+			$label.on('click', function() {
+				$label.removeClass("select");
+				$(this).addClass("select");
+			});
+			$radio.on('click', function() {
+				$label.removeClass("select");
+				$(this).next($label).addClass("select");
+			});
+			$("#J_Pay").click(function() {
+				var pcbNum = $("#pcbNum").val()
+				if (pcbNum == '' || pcbNum == '0') {
+					asyncbox.tips('请填写充值金额，谢谢！', 'error');
+					$("#pcbNum").select();
+					return false;
+				} else {
+					var spcbNum = /^\d{0,8}\.{0,1}(\d{1,4})?$/;
+					if (!spcbNum.exec(pcbNum)) {
+						asyncbox.tips('请正确填写要充值的金额，谢谢！', 'error')
+						$("#pcbNum").select();
+						return false;
+					}
+				}
+			});
+		});
+	</script>
+	<div id="asyncbox_cover" unselectable="on" style="opacity: 0.1; filter: alpha(opacity = 10); background: #000"></div>
+	<div id="asyncbox_clone"></div>
+	<div id="asyncbox_focus"></div>
+	<div id="asyncbox_load">
+		<div>
+			<span></span>
+		</div>
+	</div>
+	<div id="asyncbox_cover" unselectable="on" style="opacity: 0.1; filter: alpha(opacity = 10); background: #000"></div>
+	<div id="asyncbox_clone"></div>
+	<div id="asyncbox_focus"></div>
+	<div id="asyncbox_load">
+		<div>
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>

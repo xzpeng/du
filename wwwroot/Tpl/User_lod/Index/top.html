@@ -1,0 +1,37 @@
+﻿<div id="top_logo">
+   <div id="logo"><img src="/Public/images/logo.png"></div>
+   <div id="login_reg">
+      <div><{$Think.session.UserName}>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="/User_Index_ExitLogin.html">退出登录</a>&nbsp;&nbsp;&nbsp;&nbsp;|</div>
+      <div style="width:667px; margin-top:0px; height:20px; text-align:center;">
+    <!--  <img src="/Public/User/images/new.gif" height="15" width="35" onclick="javascript: showDialog('info', '测试信息<br>sdgbsgsdag','标题', 700);">&nbsp;&nbsp;&nbsp;&nbsp;-->
+      
+         
+      </div>
+   </div>
+</div>
+
+<div style="width:100%; height:38px; margin:0px auto; background-image:url(/Public/User/images/menu_menu_x.jpg);">
+
+<div id="menu">
+<div onclick="javascript:location.href='/User'">首 页</div>
+<div onclick="javascript:location.href='/User_Index_basic.html'">账户管理</div>
+<div onclick="javascript:location.href='/User_Index_wyjyjl.html'" style="margin-left:45px;">交易管理</div>
+<div onclick="javascript:location.href='/User_Index_npdy.html'" style="margin-left:45px;">付款</div>
+<div onclick="javascript:location.href='/User_Index_skym.html'" >我的个性主页</div>
+
+
+
+<switch name="Think.session.UserType">
+    <case value="5">
+    <div onclick="javascript:location.href='/User_Index_tjyg.html'">
+    分润管理
+    </div>
+    </case>
+    <default />
+</switch>
+
+
+
+</div>
+
+</div>

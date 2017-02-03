@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<css href='/Public/User/css/showDialog.css' />
+<script src="/Public/js/jquery.min.js"></script>
+<script src="/Public/js/bootstrap.min.js"></script>
+<link href="/Public/css/bootstrap.min.css" rel="stylesheet">
+<js href='/Public/User/js/js.js' />
+<js href='/Public/js/floatDiv.js' />
+<js href='/Public/User/js/showDialog.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(0)").addClass("menu_bg");
+	
+	$("#menu_x > div > div:eq(1)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(1) a").css("color","#F60");
+	
+	
+	$("#fyid").mouseover(function(e) {
+        $("#fyxjcd").show();
+    });
+	
+	$("#fyid").mouseout(function(e) {
+        $("#fyxjcd").hide();
+    });
+	
+	$("#fyxjcd").mouseover(function(e) {
+        $("#fyxjcd").show();
+    });
+	
+	$("#fyxjcd").mouseout(function(e) {
+        $("#fyxjcd").hide();
+    });
+});
+</script>
+<style type="text/css">
+.jymx table{
+	width:100%;
+	height:40px;
+	}
+.jymx table tr td{
+	width:16%;
+	height:40px;
+	text-align:center;
+	vertical-align:middle;
+	color:#666;
+	font-weight:bold;
+	}	
+.beizu{
+	width:200px;
+	/*background-color:#0F0;*/
+	overflow:hidden;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+	}	
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:shjktop" />
+
+
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; font-size:15px; font-weight:bold; color:#333; margin:0px auto; margin-top:10px; height:40px;">
+<div style="width:50%; float:left; height:40px; line-height:40px; text-align:left;">
+&nbsp;
+<span style="color:#000; font-weight:bold;"><{$Compellation}></span>&nbsp;<span style="color:#06F;"></span>&nbsp;&nbsp;<span style="font-weight:normal;"><{$Think.session.UserName}></span>&nbsp;<span style="color:#000; font-weight:bold;">商户ID：&nbsp;<span style="font-weight:normal; color:#999;"><{$_SESSION["UserID"]+10000}>&nbsp;(
+<if condition="$zt == 0">
+未审核
+<elseif condition="$zt == 1" />
+审核中
+<elseif condition="$zt == 2" />
+已审核
+</if>
+)</span></span>
+&nbsp;<a href="/User_Index_aqxx.html" style="color:#999; font-size:13px;">密码修改</a>
+</div>
+<!-------------------------------------->
+<div style="width:50%; float:left; height:40px; line-height:40px; text-align:right;">
+<span style="color:#999; font-weight:normal; font-size:13px;">上次登录时间：<span style="color:#F90"><{$Think.session.scdate}></span></span>&nbsp;&nbsp;
+<span style="color:#999; font-weight:normal; font-size:13px;">上次登录IP：<span style="color:#F90"><{$Think.session.scip}></span></span>&nbsp;&nbsp;
+</div>
+</div>
+<div style="clear:left"></div>
+<div id="grxx">
+  <div class="grxx2">
+      <div style="width:100%; height:78px; line-height:78px; font-weight:bold; font-size:30px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;<sapn style="font-family:'微软雅黑'; color:#3384ad;">可用余额：</span>
+       &nbsp;&nbsp;<span style="color:#F00; font-size:35px;"><{$Money}></span>&nbsp;<span style="font-size:18px; font-weight:normal; color:#3384ad;">元</span>&nbsp;&nbsp;
+       </div>
+       <div style="width:100%; height:30px; line-height:30px; font-size:13px; text-align:right; color:#3384ad;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账户余额 (可用余额 + 未处理提现金额)：
+       &nbsp;&nbsp;<span style="color:#F60; font-size:25px;"><{$zhye}></span>&nbsp;<span style="font-size:18px; font-weight:normal;">元</span>&nbsp;&nbsp;
+       
+        &nbsp;&nbsp;&nbsp;&nbsp;已提现金额：
+       &nbsp;&nbsp;<span style="color:#F60; font-size:25px;"><{$ytxmoney}></span>&nbsp;<span style="font-size:18px; font-weight:normal;">元</span>&nbsp;&nbsp;
+      </div>
+      
+  </div>
+  <div class="grxx3" style="width:auto;">
+   <div style="width:100%; height:auto; font-size:13px; color:#000; margin-top:8px;">
+    <volist name="listgg" id="vo">
+           <div class="newslist" style="color:#000">♦ <a href="/User_Index_sjtggshow_newsid_<{$vo.id}>.html" target="_blank" style="color:#666"><{$vo.title}></a></div>
+           </volist>
+           <div style="text-align:right; width:220px; height:25px;"><a href="/User_Index_sjtgg.html" style="color:#000; font-size:13px;">更多</a></div>
+   </div>
+  </div>
+  <div style="clear:left;"></div>
+  <div class="grxx1" style="position:relative">
+      <button  class="btn btn-primary" onclick="javascript:window.location.href='/User_Index_basic.html'">用户管理</button>
+     &nbsp;&nbsp;
+     <button  class="btn btn-primary" onclick="javascript:window.location.href='/User_Index_tktx.html'">&nbsp;&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;现&nbsp;&nbsp;</button>
+     &nbsp;&nbsp;
+       <button  class="btn btn-primary" onclick="javascript:window.location.href='/User_Index_tkyh_banktype_0.html'">设置银行卡</button>
+       &nbsp;&nbsp;
+        <button  class="btn btn-primary" onclick="javascript:window.location.href='/User_Index_chongzhi.html'">&nbsp;&nbsp;充&nbsp;&nbsp;&nbsp;&nbsp;值&nbsp;&nbsp;</button>
+      &nbsp;&nbsp;
+      <button  class="btn btn-primary" onclick="javascript:window.location.href='/User_Index_npdy.html'">&nbsp;&nbsp;付&nbsp;&nbsp;&nbsp;&nbsp;款&nbsp;&nbsp;</button>
+      &nbsp;&nbsp;
+      <button  class="btn btn-primary" onclick="javascript:window.location.href='/User_Index_shjk.html'">商户接入</button>
+       &nbsp;&nbsp;
+       <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    开通功能 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="/User_Index_sqzdjs.html">T + 0</a></li>
+    <li class="divider"></li>
+    <li><a href="/User_Index_wtplxf.html">委托批量下发</a></li>
+  </ul>
+</div>
+       
+  </div>
+  
+  <div class="grxx4" style=" color:#3384ad;">
+    【当日订单数量：<span style="color:#333"><{$dayorder}></span>&nbsp;笔】【总额订单：<span style="color:#F00"><{$daymoney}></span>&nbsp;元】【默认银行卡：<span style="font-weight:bold; color:#666"><{$BankName}></span>】
+  </div>
+  
+</div>
+
+
+
+<include file="Index:foot" />
+<!------------------------------------------------------------------------------------------------------>
+<div style="width:400px; height:auto; border-top:1px solid #09F; border-left:1px solid #09F;  background-color:#F7F7F7; display:none;" id="xxtsdiv">		
+    <div style="width:400px; height:40px; background-image:url(/Public/User/images/menu_bg_x.jpg); text-align:right; line-height:40px;">
+    <span style="font-size:13px; color:#0089ad; font-weight:bold; cursor:pointer;" id="sqgb" zt="0">收 起</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px; color:#F00; cursor:pointer;" id="gbxx" title="关 闭"><img src="/Public/User/images/gb.gif" style="vertical-align:middle;"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div style="width:400px; height:360px; background-color:#FFF" id="showtsxx"><br>
+       <ul style="list-style:none;">
+       <volist name="listTongzhi" id="vo">
+            <li style="height:30px; line-height:30px;"><img src="/Public/User/images/arrow_061.gif">&nbsp;<a href="javascript:showDialog('info','<{$vo.Content}>','<{$vo.Title}>');" style="font-size:13px; color:#06F"><{$vo.Title}></a></li>
+          </volist> 
+       </ul>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#xxtsdiv").floatdiv("rightbottom");
+	$("#sqgb").click(function(e) {
+        if($(this).attr("zt") == 0){
+			$("#showtsxx").animate({"height":"0px"},1000,function(){
+				$("#showtsxx").hide();
+				$("#sqgb").attr("zt","1");
+				$("#sqgb").text("展 开");
+				$("#sqgb").css("color","#F00");
+				});
+			}else{
+				if($(this).attr("zt") == 1){
+					$("#showtsxx").show();
+				  $("#showtsxx").animate({"height":"360px"},1000,function(){
+					  $("#sqgb").attr("zt","0");
+					  $("#sqgb").text("收 起");
+					  $("#sqgb").css("color","#0089ad");
+					  });
+				  }
+				}
+    });
+	
+	$("#gbxx").click(function(e) {
+        $("#xxtsdiv").fadeOut(1000);
+    });
+});
+
+</script>
+<!------------------------------------------------------------------------------------------------------>
+</html>

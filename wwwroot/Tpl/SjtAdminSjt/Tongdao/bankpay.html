@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<style type="text/css">
+#tongdao{
+	width:900px;
+
+	}
+#tongdao div{
+	width:300px;
+	float:left;
+	}	
+#tongdao div input[type='text']{
+	width:150px;
+	}	
+</style>
+</head>
+
+<body>
+<form name="Form1" method="post" action="/SjtAdminSjt_Tongdao_EditBankpay_apiname_<{$Think.get.apiname}>.html">
+<div id="tongdao">
+	<div style="font-size:25px; text-align:center; color:#00F; font-weight:bold; width:900px;"></div>
+    <foreach name="BankArray" item="vo">
+    <div>
+    <switch name="key">
+        <case value="zsyh">招商银行</case>
+        <case value="gsyh">工商银行</case>
+        <case value="jsyh">建设银行</case>
+        <case value="shpdfzyh">上海浦东发展银行</case>
+        <case value="nyyh">农业银行</case>
+        <case value="msyh">民生银行</case>
+        <case value="szfzyh">深圳发展银行</case>
+        <case value="xyyh">兴业银行</case>
+        <case value="jtyh">交通银行</case>
+        <case value="gdyh">光大银行</case>
+        <case value="zgyh">中国银行</case>
+        <case value="payh">平安银行</case>
+        <case value="gfyh">广发银行</case>
+        <case value="zxyh">中信银行</case>
+        <case value="nbyh">宁波银行</case>
+        <case value="fdyh">富滇银行</case> 
+        <case value="zgyzcxyh">邮政银行</case> 
+    </switch>
+    ：<input type="text" name="<{$key}>" value="<{$vo}>"></div>
+    </foreach>
+    
+    <div style="text-align:center;font-weight:bold; width:800px;"><input type="submit" value="确认修改">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重 置">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="返 回" onclick="javascript:location.href='/SjtAdminSjt_Tongdao_Index_apiname_<{$Think.get.apiname}>.html';"></div>
+</div>
+</form>
+</body>
+</html>

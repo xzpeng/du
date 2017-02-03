@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>支付充值</title>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<css href='/Public/User/css/css.css' />
+<css href='/Public/User/css/showDialog.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(0)").addClass("menu_bg");
+	
+	$("#menu_x > div > div:eq(1)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(1) a").css("color","#F60");
+});
+</script>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:shjktop" />
+<form name="Form1" id="Form1" method="post" action="http://<{:C("WEB_URL")}>/Payapi_Index_Pay.html">
+<input type="hidden" value="<{$Sjt_MerchantID}>" name="p1_MerId">
+<input type="hidden" value="<{$Think.session.UserName}>" name="p5_Pid">
+<input type="hidden" value="<{$Think.session.UserName}>" name="Sjt_UserName">
+<input type="hidden" value="<{$Think.session.UserName}>" name="p7_Pdesc">
+<input type="hidden" name="p8_Url" value="<{$Sjt_Merchant_url}>">
+<input type="hidden" name="Sjt_Return_url" value="<{$Sjt_Return_url}>">
+<input type="hidden"  name="Sjt_Key" value="<{$Sjt_Key}>">
+<input type="hidden" name="Sjt_Paytype" id="Sjt_Paytype" value="b" />
+<div class="cz_div">
+    
+    请输入您要充值的金额：<input type="text" name="Sjt_OrderMoney" id="Sjt_OrderMoney" onkeyup="clearNoNum(this)">
+
+ 
+</div>
+<div class="cz_div" style="height:auto;">
+  <input type="radio" value="zsyh" name="pd_FrpId" checked="checked"><img src="/Public/User/images/zhaohang.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="gsyh" name="pd_FrpId"><img src="/Public/User/images/gongshang.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="jsyh" name="pd_FrpId"><img src="/Public/User/images/jianshe.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="shpdfzyh" name="pd_FrpId"><img src="/Public/User/images/shangpufa.gif">&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+ <input type="radio" value="nyyh" name="pd_FrpId"><img src="/Public/User/images/nongye.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="msyh" name="pd_FrpId"><img src="/Public/User/images/minsheng.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="szfzyh" name="pd_FrpId"><img src="/Public/User/images/shenfa.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="xyyh" name="pd_FrpId"><img src="/Public/User/images/xingye.gif">&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+ <input type="radio" value="jtyh" name="pd_FrpId"><img src="/Public/User/images/jiaotong.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="gdyh" name="pd_FrpId"><img src="/Public/User/images/guangda.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="zgyh" name="pd_FrpId"><img src="/Public/User/images/zhongguo.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="payh" name="pd_FrpId"><img src="/Public/User/images/pingan.gif">&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+ <input type="radio" value="gfyh" name="pd_FrpId"><img src="/Public/User/images/guangfa.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="zxyh" name="pd_FrpId"><img src="/Public/User/images/zhongxin.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="radio" value="nbyh" name="pd_FrpId"><img src="/Public/User/images/ningbo.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+</div>
+<div class="cz_div">
+    
+   <input type="image" src="/Public/User/images/cz.gif" style="margin-top:20px;">
+ 
+</div>
+</form>
+<include file="Index:foot" />
+</body>
+</html>

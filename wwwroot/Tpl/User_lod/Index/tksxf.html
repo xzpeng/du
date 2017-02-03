@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员管理后台</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<js href='/Public/User/js/pcasunzip.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(1)").addClass("menu_bg");
+	
+	$("#menu_x > div > div:eq(8)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(8) a").css("color","#F60");
+	
+	$(".tksxf01").click(function(e) {
+		$(".tksxf01").removeClass("flbg");
+        $(this).addClass("flbg");
+		showdivclassname = $(this).attr("name");
+		$(".t01").hide();
+		$("#"+showdivclassname).show();
+    });
+	
+	$(".tksxf01:eq(0)").click();
+});
+</script>
+<style type="text/css">
+.tksxftab{
+	width:100%;
+	height:auto;
+	border-left:1px solid #CCC;
+	border-top:0px solid #CCC;
+	margin:0px auto;
+	font-size:13px;
+	
+	}
+.tksxftab tr td{
+	width:33.5%;
+	height:50px;
+	vertical-align:middle;
+	text-align:center;
+	font-size:20px;
+	color:#27a1d6;
+	font-weight:bold;
+	border-right:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	}	
+.tksxftab tr td span{
+	color:#F00;
+	}	
+.flbg{
+	background-image:url(/Public/User/images/flbg.jpg);
+	color:#0097be;
+	}	
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:zhgl" />
+
+
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px;font-size:15px; text-align:left; font-weight:bold; color:#333">
+
+<div name="t00" style="height:40px; width:200px; text-align:center; line-height:40px; float:left; cursor:pointer;" class="tksxf01">提款手续费(T + 0)</div>
+<div name="t11" style="height:40px; width:200px; text-align:center; line-height:40px; float:left; cursor:pointer;" class="tksxf01">提款手续费(T + 1)</div>
+</div>
+ 
+<div style="width:1000px; height:auto; margin:0px auto; display:none;" id="t00" class="t01">
+<table border="0" cellpadding="0" cellspacing="0" class="tksxftab">
+<tr>
+<td style="width:70%; font-size:18px; color:#999; font-weight:bold;">提款金额</td>
+<td style="widows:30%; font-size:18px; color:#999; font-weight:bold;">手续费</td>
+</tr>
+	<volist name="list0" id="vo">
+   
+  <tr>
+  <td><span><{$vo.k_money}></span> 元&nbsp;&nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;&nbsp;<span><{$vo.s_money}></span> 元</td>
+  
+  <td><span><{$vo.fl_money}></span> 元</td>
+  </tr>  
+    </volist>
+</table>
+</div>
+
+<div style="width:1000px; height:auto; margin:0px auto; display:none;" id="t11" class="t01">
+<table border="0" cellpadding="0" cellspacing="0" class="tksxftab">
+<tr>
+<td style="width:70%; font-size:18px; color:#999; font-weight:bold;">提款金额</td>
+<td style="widows:30%; font-size:18px; color:#999; font-weight:bold;">手续费</td>
+</tr>
+	<volist name="list1" id="vo">
+   
+  <tr>
+  <td><span><{$vo.k_money}></span> 元&nbsp;&nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;&nbsp;<span><{$vo.s_money}></span> 元</td>
+  
+  <td><span><{$vo.fl_money}></span> 元</td>
+  </tr>  
+    </volist>
+</table>
+</div>
+
+<include file="Index:foot" />
+
+</body>
+</html>

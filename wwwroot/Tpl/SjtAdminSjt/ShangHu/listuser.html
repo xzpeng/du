@@ -1,0 +1,157 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/SjtAdminSjt/js/listuser.js' />
+
+</head>
+
+<body>
+<div class="listmenu">
+<input type="button" value="重置登录密码为123456" id="czdlmm">
+<input type="button" value="重置支付密码为123456" id="czzfmm">
+<input type="button" value="删 除" id="shanchu">
+<input type="button" value="审 核" id="plsh">
+<input type="button" value="冻 结" id="dongjie">
+<input type="button" value="解 冻" id="jiedong">
+<input type="button" value="删除密码保卡限制" id="scmbkxz">
+<!--<input type="button" value="金 额">-->
+<!--<input type="button" value="导 出">-->
+<!--<input type="button" value="手续费">-->
+<input type="button" value="开通T+0" id="kaitongT0">
+<input type="button" value="关闭T+0" id="kaitongT1">
+<input type="button" value="网银通道" id="wytd">
+<input type="button" value="发送通知" id="fstz">
+
+</div>
+<div class="listmenu" style="text-align:right;">
+&nbsp;&nbsp;&nbsp;&nbsp;请输入【商户号】或【用户名】或【QQ号】或【手机号】或【姓名】：
+<input type="text" size="30" name="SearchContent" id="SearchContent" value="<{$Think.get.SearchContent}>" />&nbsp;&nbsp;
+<select name="UserType" id="UserType">
+   <option value="">通道类型</option>
+   <volist name="listtongdao" id="vo">
+    <option value="<{$vo.apiname}>"><{$vo.myname}></option>
+   </volist>
+  
+</select>&nbsp;&nbsp;
+<script type="text/javascript">
+$("#UserType").val('<{$Think.get.UserType}>');
+</script>
+<select name="Zt" id="Zt">
+   <option value="">全部商户审核</option>
+   <option value="2">已审核</option>
+   <option value="1">等待审核</option>
+   <option value="0">未提交</option>
+</select>
+<script type="text/javascript">
+$("#Zt").val(<{$Think.get.Zt}>);
+</script>
+<select name="status" id="status">
+   <option value="">全部状态</option>
+<!--   <option value="0">未激活</option>-->
+   <option value="1">正常</option>
+   <option value="2">锁定</option>
+</select>
+<script type="text/javascript">
+$("#status").val(<{$Think.get.status}>);
+</script>
+<select name="Userlx" id="Userlx">
+<option value="">全部用户类型</option>
+<option value="1">普通商户</option>
+<option value="5">代理商</option>
+</select>
+<script type="text/javascript">
+$("#Userlx").val(<{$Think.get.Userlx}>);
+</script>
+<input type="button" value="搜 索" id="SearchButton" />
+</div>
+<table cellpadding="0" cellspacing="0" border="0" id="listuser">
+<tr style="background-color:#5d7b9d; color:#fff;">
+<td id="xzxz" xz="0" style="cursor:pointer;">选择</td>
+<td>用户类型</td>
+<td>用户名</td>
+<td>商户号</td>
+<td>网银通道</td>
+<td>姓名</td>
+<td>QQ</td>
+<td>身份证号</td>
+<td>手机号</td>
+<td>状态</td>
+<td>商户审核</td>
+<td>T+0</td>
+<td colspan="2">金额</td>
+<td colspan="2">通道</td>
+<td colspan="2">提款设置</td>
+<td>上级账号</td>
+<td>下级数量</td>
+</tr>
+<volist name="list" id="vo">
+<if condition="$vo.Zt == 0">
+  <tr style="background-color:#E4E4E4">
+<else />
+  <if condition="$vo.Zt == 1">
+  <tr style="background-color:#FAC7B6">
+  <else />  <tr>
+  </if>
+</if>
+
+<td style="width:5%;"><input type="checkbox" class="xzxz" name="xz" value="<{$vo.Shh}>" zt="<{$vo.Zt}>"></td>
+<td>
+<if condition="$vo.UserType == 5">
+<span style="font-weight:bold; color:#F00">代理商</span>
+<else />
+商户
+</if>
+</td>
+<td><a href="javascript:editusername(<{$vo.Shh}>)"><{$vo.UserName}></a>&nbsp;</td>
+<td><a href="<{:U("ShangHu/dluser","userid=".$vo["Shh"])}>" target="_blank"><{$vo['Shh']+10000}></a>&nbsp;</td>
+<td style="color:#00F;">
+<{$vo['PayBank']|GettTongdao=###}>&nbsp;
+</td>
+<td><{$vo.Compellation}>&nbsp;</td>
+<td><{$vo.qq}>&nbsp;</td>
+<td><{$vo.IdentificationCard}>&nbsp;</td>
+<td><{$vo.MobilePhone}>&nbsp;</td>
+<td>
+<switch name="vo.status">
+<case value="0">未激活</case>
+<case value="1">正常</case>
+<case value="2"><font style="color:#F00">锁定</font></case>
+</switch>
+</td>
+
+<td>
+<if condition="$vo.Zt == 0">未提交
+<else />
+  <if condition="$vo.Zt == 1"><a href="javascript:dakai('<{$vo.Shh}>')">等待审核</a>
+  <else /><a href="javascript:dakai('<{$vo.Shh}>')">已审核</a>  
+  </if>
+</if>
+</td>
+<td>
+<if condition="$vo.t0 == 0">
+否
+<else />
+<span style="color:#090">是</span>
+</if>
+</td>
+<td><span style="color:#F00; width:30px;"><b>￥</b><{$vo.money}></span>
+</td>
+<td><input type="button" value="金额" onclick="javascript:xgje(<{$vo.Shh}>);"></td>
+<td><span style="color:#090; width:30px;"><{$vo['Shh']|GetSxf=###}></span></td>
+<td><input type="button" value="通道" onclick="javascript:sxfs(<{$vo.Shh}>);"></td>
+<td><input type="button" value="设置" onclick="javascript:tksz(<{$vo.Shh}>);"></td>
+<td><input type="button" value="银行" onclick="javascript:tkyh(<{$vo.Shh}>);"></td>
+<td>
+ <{$vo['Shh']|GetShangJi=###}>
+</td>
+<td><{$vo['Shh']|GetShangHu=###}></td>
+</tr>
+</volist>
+<tr style="font-size:14px;"><td colspan="20"><{$page}>&nbsp;</td></tr>
+</table>
+</body>
+</html>

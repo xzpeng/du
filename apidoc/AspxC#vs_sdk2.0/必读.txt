@@ -1,0 +1,13 @@
+1：apihhqi目录下，打开web.config文件。
+在标注“必须更改的地方，改成正确的参数”
+
+2：复制 apihhqi,bin目录到 商城网站的根目录
+
+
+测试：
+
+http://您的商城网站地址/apihhqi/default.aspx
+
+
+src是源代码，不做二次开发，可以不用看
+

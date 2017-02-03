@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href='/Public/SjtAdminSjt/css/css.css' />
+<js href='/Public/SjtAdminSjt/js/jquery-1.7.2.js' />
+<script type="text/javascript">
+function check(){
+	return confirm("你确认要修改吗？");
+}
+</script>
+</head>
+
+<body>
+<form name="Form1" method="post" action="/SjtAdminSjt_Tongdao_EditTongdao_apiname_<{$Think.get.apiname}>.html" onsubmit="return check();">
+<div id="tongdao">
+	<div style="font-size:25px; text-align:center; color:#00F; font-weight:bold;">
+    <switch name="Think.get.apiname">
+    <case value="wxdemo">微信</case>
+    <case value="alipay">支付宝</case>
+    <case value="alipaywap">支付宝wap</case>
+    <case value="wftwxwap">微信wap</case>
+    <case value="tenpay">财付通</case>
+    <case value="shengfutong">盛付通</case>
+    <case value="qiling">70卡</case>
+    <case value="kuaiqian">快钱</case>
+    <case value="yibao">易宝</case>
+    <case value="yinlian">银联在线</case>
+    <case value="rongbao">融宝</case>
+    <case value="huanxunips">环迅IPS</case>
+    <case value="qqbao">QQ钱包</case>
+    <case value="qqbaowap">QQ钱包wap</case>
+    </switch>
+    </div>
+    <volist name="list" id="vo">
+    <div>商户ID：<input type="text" name="shid" id="shid" value="<{$vo.shid}>"></div>
+    <div>密&nbsp;&nbsp;&nbsp;&nbsp;钥：<input type="text" name="key" id="key" value="<{$vo.key}>" style="width:310px;"></div>
+    <div>账&nbsp;&nbsp;&nbsp;&nbsp;户：<input type="text" name="zhanghu" id="zhanghu" value="<{$vo.zhanghu}>"></div>
+    <div>网银费率：<input type="text" name="fl" id="fl" value="<{$vo.fl}>"></div>
+    <div>是否商户可选：
+    <select name="xz" id="xz">
+    	<option value="1">可选</option>
+        <option value="0">不可选</option>
+    </select>
+    <script type="text/javascript">
+	$("#xz").val(<{$vo.xz}>);
+	</script>
+    </div>
+    <div>上次修改时间：<span style="font-size:25px; color:#F00; font-weight:bold;"><{$vo.edit_date}></span><input type="hidden" name="datetime" value="<{$datetime}>" /></div>
+    <div style="text-align:center; width:600px;"><input type="submit" value="确认修改"  style="font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重 置"  style="font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    </volist>
+</div>
+</form>
+</body>
+</html>

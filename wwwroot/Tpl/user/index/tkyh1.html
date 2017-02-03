@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员管理后台</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(1)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(6)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(6) a").css("color","#F60");
+	$("#menu_x_X").show();
+});
+
+function check(){
+	if($("#BankName").val() == ""){
+		alert("开户银行名称不能为空！");
+		$("#BankName").focus();
+		return false;
+	}else{
+		if($("#BankBranch").val() == ""){
+		    alert("开户分行名称不能为空!");
+			$("#BankBranch").focus();
+			return false;
+		}else{
+			if($("#BankAccountNumber").val() == ""){
+				alert("开户银行账户不能为空！");
+				$("#BankAccountNumber").focus();
+				return false;
+			}else{
+				if($("#BankCompellation").val() == ""){
+					alert("开户人姓名不能为空！");
+					$("#BankCompellation").focus();
+					return false;
+				}else{
+					if(confirm("您确认要添加吗？") == true){
+					    return true;
+					}else{
+						return false;
+					}
+				}
+			}
+		}
+	}
+}
+
+function DelBank(id){
+	if(confirm("您确认要删此银行信息吗？") == true){
+	    location.href = "/User_Index_DelBank_id_"+id+".html?banktype=<{$banktype}>";
+	}
+}
+
+
+function morenselect(){
+	if($("#moren").attr("checked") == "checked"){
+	    $("#moren").attr("checked",false);
+	}else{
+		$("#moren").attr("checked",true);
+		}
+}
+</script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:zhgl" />
+
+<form name="Form1" method="post" action="/User_Index_AddBank_banktype_<{$banktype}>.html" onsubmit="return check()">
+<input type="hidden" name="banktype" value="<{$banktype}>">
+<!-------------------------------------------------提款银行-------------------------------------------------------->
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;<{$tkyhtypename}>&nbsp;&nbsp;&nbsp;&nbsp;
+<if condition="$banktype == 1">
+<span style="color:#666;">【可添加委托提款银行  <span style="color:#060"><{$wtyh}></span> 个&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已添加委托提款银行 <span style="color:
+#F00"><{$ytjtkyh}></span> 个】</span>
+</if>
+</div>
+<div style="height:10px;"></div>
+<div style="width:1000px; height:auto; border:0px;">
+   <volist name="list" id="vo">
+   <div class="jbxx" style="width:33%; float:left; border-bottom:0px;"><a href="/User_Index_edittkyh_id_<{$vo.id}>.html?banktype=<{$Think.get.banktype}>" style="color:#063; text-decoration:none;"><{$vo.BankName}>(<{$vo.BankCompellation}>)</a>
+   <if condition="$vo.moren == 1">
+   (默认)
+   </if>
+ 
+    <a href="javascript:DelBank(<{$vo.id}>)"><img src="/Public/User/images/del.jpg" style="vertical-align:middle; border:0px;"></a></div>
+   </volist>
+   
+</div>
+<div style="clear:left;"></div><br>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-bottom:0px;">
+
+<if condition="($ytjtkyh lt $wtyh) or ($banktype == 0)">
+
+    <div class="jbxx"><input type="hidden" name="UserID" id="UserID" value="<{$Think.session.UserID}>">
+    开户行名称：<input type="text" class="input_text" name="BankName" id="BankName" style="width:300px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <if condition="$banktype == 0">
+    <span class="tsts"><input type="checkbox" name="moren" id="moren" value="1" style="vertical-align:middle" /> <span style="cursor:pointer;" onclick="javascript:morenselect();">默认提款账户</span></span>
+    </if>支付宝用户请填写"支付宝"
+    </div>
+    <div class="jbxx">
+    开户分行名：<input type="text" class="input_text" name="BankBranch" id="BankBranch" style="width:300px;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts"></span>支付宝用户请填写"支付宝"
+    </div>
+     <div class="jbxx">
+      开户支行名：<input type="text" class="input_text" name="zhihang" id="zhihang" style="width:300px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts"></span>支付宝用户请填写"支付宝"
+     </div>
+     <div class="jbxx">
+      收款&nbsp;账号：<input type="text" class="input_text" name="BankAccountNumber" id="BankAccountNumber" style="width:300px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts"></span>支付宝用户请填写支付宝账号
+     </div>
+    
+    <div class="jbxx">
+     开户人姓名：
+     
+     <if condition="$banktype == 0">
+     <!------------------------------------------------------------------------------------------->
+    <span style="color:#000;"><{$Compellation}></span>
+     <input type="hidden" class="input_text" name="BankCompellation" id="BankCompellation" value="<{$Compellation}>" style="width:300px;">
+     &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts"></span>
+     <!-------------------------------------------------------------------------------------------->
+     <else />
+     <input type="text" class="input_text" name="BankCompellation" id="BankCompellation" style="width:300px;">
+     </if>
+    </div>
+ </if>  
+    <div class="jbxx" style="text-align:center; height:50px;">
+      
+      <if condition="$banktype == 0">
+      <!---------------------------------------------------------------------------------->
+       <if condition="$Compellation == ''">
+       请您在 <a href="/User_Index_basic.html">基本信息</a> 里添加姓名，才能添加提款银行！<{$Compellation}>
+       <else />
+       <input type="image" src="/Public/User/images/tj.gif" style="vertical-align:middle">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="/Public/User/images/chongzhi.gif" onclick="javascript:document.Form1.reset()" style="vertical-align:middle; cursor:pointer;">
+       </if>
+      <!----------------------------------------------------------------------------------->
+      <else />
+      <!--------------------------------------------------------------------------------->
+      <if condition="($ytjtkyh lt $wtyh)">
+       <input type="image" src="/Public/User/images/tj.gif" style="vertical-align:middle">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="/Public/User/images/chongzhi.gif" onclick="javascript:document.Form1.reset()" style="vertical-align:middle; cursor:pointer;">
+    </if>
+       <!-------------------------------------------------------------------------------->
+      </if>
+        
+    </div>
+    
+</div>
+
+
+</div>
+
+<!-------------------------------------------------提款银行-------------------------------------------------------->
+</form>
+
+<include file="Index:foot" />
+
+</body>
+</html>

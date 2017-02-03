@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+
+<script type="text/javascript">
+var i = 1;
+var obj = {
+	1 : "5,10,15,30,50,100",   //天宏一卡通
+	2 : "15,30,50,100",     //完美一卡通
+	3 : "10,15,20,30,50",    //网易一卡通
+	4 : "20,30,50,100,300",    //联通充值卡
+	5 : "5,10,15,20,25,30,50,100",   //久游一卡通
+	6 : "5,10,15,30,60,100,200",    //QQ币充值卡
+	7 : "5,15,30,40,100",      //搜狐一卡通
+	8 : "10,20,30,50,60,100,300",    //征途游戏卡
+	9 : "5,6,10,15,30,50,100",    //骏网一卡通
+	10 : "5,10,30,35,45,50,100,350",     //盛大一卡通
+	11 : "10,20,30,50,100,300",    //全国神州行
+	12 : "10,20,30,40,50,60,70,80,90,100",   //天下一卡通
+	13 : "50,100",   //电信充值
+	15 : "10,15,30,50,100"  //纵游一卡通
+	
+	}
+
+	
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(4)").addClass("menu_bg");
+	
+	$("#menu_x > div > div:eq(0)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(0) a").css("color","#F60");
+	
+	
+	$("#pd_FrpId").change(function(e) {
+        var  id = $(this).val();
+		text = $(this).find("option:selected").text();
+		$("#Sjt_ProudctID").text("");
+		var arrayval = obj[id].split(",");
+		$("#Sjt_ProudctID").append("<option value=''>请选择</option>");
+		for(var i = 0; i < arrayval.length; i++){
+			$("#Sjt_ProudctID").append("<option value='"+ arrayval[i] +"'>"+ text +"("+ arrayval[i] +"元)</option>");
+		}
+		//alert(arrayval[0]);
+    });
+	
+		$("#Sjt_ProudctID").change(function(e) {
+        var money = $(this).val();
+		$("#fkmoney").val(money);
+    });
+	
+	
+	
+});
+
+function keyPress() {  
+    var keyCode = event.keyCode;  
+    if ((keyCode >= 48 && keyCode <= 57))  
+    {  
+        event.returnValue = true;  
+    } else {  
+        event.returnValue = false;  
+    }  
+} 
+
+function tjdk(){
+	
+	$("#pldhdk").append("<div class='jbxx'>点卡卡号：<input type='text' name='Sjt_CardNumber"+i+"' id='Sjt_CardNumber"+i+"' style='font-size:18px; color:#003; font-weight:bold; width:200px;'></div>");
+	$("#pldhdk").append("<div class='jbxx'>点卡密码：<input type='text' name='Sjt_CardPassword"+i+"' id='Sjt_CardPassword"+i+"' style='font-size:18px; color:#003; font-weight:bold; width:200px;'></div>");
+	$("#pldhdk").append("<div class=\"jbxx\">&nbsp;&nbsp;<span id='ts"+i+"' style='color:#F00; font-weight:normal; font-size:13px; display:none;'><img src='/Public/User/images/loading.gif' style='vertical-align:middle'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='ts"+i+i+"' style='color:#F00; font-weight:normal; font-size:13px; display:none;'><img src='/Public/User/images/loading.gif' style='vertical-align:middle;'></span>&nbsp;</div>");
+	i = i + 1;
+}
+
+
+function qrqr(){
+      var  pd_FrpId = $("#pd_FrpId").val();
+		if(pd_FrpId == ""){
+			alert("请选择点卡！");
+		    $("#pd_FrpId").focus();
+		    return false;
+		}
+		
+		var Sjt_ProudctID = $("#Sjt_ProudctID").val();
+		if(Sjt_ProudctID == ""){
+			alert("请选择点卡充值面额！");
+		    $("#Sjt_ProudctID").focus();
+		    return false;
+		}
+		
+		var money = $("#fkmoney").val();
+		if(money == ""){
+			alert("付款金额不能为空！");
+			$("#fkmoney").focus();
+			return false;
+		}
+		
+		$("#qrqr").hide();
+		$("#tjygdk").hide();
+		$("#zzcl").show();
+		ajaxtjdk(1);
+		
+	
+		
+		
+}
+
+
+function ajaxtjdk(k){
+	
+  //alert($("#Sjt_CardNumber"+k).val());
+  $("#Sjt_CardNumber"+k).attr("disabled","disabled");
+  $("#Sjt_CardPassword"+k).attr("disabled","disabled");
+   $("#ts"+k).show();
+	$.ajax({
+			type:'POST',
+			url:"/User_Index_mypay.html",
+			data:"money="+$("#fkmoney").val()+"&pd_FrpId="+$("#pd_FrpId").val()+"&Sjt_Paytype=g&Sjt_ProudctID="+$("#Sjt_ProudctID").val()+"&Sjt_CardNumber="+$("#Sjt_CardNumber"+k).val()+"&Sjt_CardPassword="+$("#Sjt_CardPassword"+k).val(),
+			dataType:'text',
+			success:function(str){
+				///////////////////////////////////
+				//alert(str);
+				s = str.split("&");
+				if(s[0] == "ok"){
+				    $("#ts"+k).text("检验成功！正在获取充值状态......");
+					 $("#ts"+k+k).show();
+					////////////////////////////////////////////////////////////////////////////
+					
+						////////////////////////////////////////////////////////////////////////////////////////////////
+						$.ajax({
+					type:'POST',
+					url:"/User_Index_hqdkzt.html",
+					data:"Sjt_TransID="+s[1],
+					dataType:'text',
+					success:function(str){
+						///////////////////////////////////
+					
+						if(str == "ok"){
+							  $("#ts"+k+k).text("充值成功！");
+							  if(k < i){
+								  k = k + 1;
+								  ajaxtjdk(k);
+								  }else{
+									  $("#zzcl").text("已全部处理完毕...");
+									  }		
+							}else{
+								$("#ts"+k+k).text("获取充值状态失败，请以最终的交易记录为准！");
+								if(k < i){
+								  k = k + 1;
+								  ajaxtjdk(k);
+								  }else{
+									  $("#zzcl").text("已全部处理完毕...");
+									  }		
+								}
+						
+						///////////////////////////////////
+						},
+					error:function(str){
+						//////////////////////////
+						}	
+					});
+						///////////////////////////////////////////////////////////////////////////////////////////////
+						
+					
+					
+					
+					///////////////////////////////////////////////////////////////////////////
+					}else{
+						$("#ts"+k).text(s[0]);
+						if(k < i){
+								  k = k + 1;
+								  ajaxtjdk(k);
+								  }else{
+									  $("#zzcl").text("已全部处理完毕");
+									  }		
+						}
+				///////////////////////////////////
+				},
+			error:function(str){
+				//////////////////////////
+				}	
+			});
+}
+</script>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:pldhdktop" />
+
+
+
+
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;批量兑换点卡
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px" id="pldhdk">
+<div class="jbxx">
+   选择点卡：<select name="pd_FrpId" id="pd_FrpId" >
+        <option value="">请选择</option>
+		<option value="1">天宏一卡通</option>
+		<option value="2">完美一卡通</option>
+		<option value="3">网易一卡通</option>
+		<option value="4">联通充值卡</option>
+		<option value="5">久游一卡通</option>
+		<option value="6">QQ币充值卡</option>
+		<option value="7">搜狐一卡通</option>
+		<option value="8">征途游戏卡</option>
+		<option value="9">骏网一卡通</option>
+		<option value="10">盛大一卡通</option>
+		<option value="11">全国神州行</option>
+		<option value="12">天下一卡通</option>
+		<option value="13">电信充值</option>
+        <option value="15">纵游一卡通</option>
+      </select>
+       <select name="Sjt_ProudctID" id="Sjt_ProudctID">
+      </select>
+</div>
+<div class="jbxx">
+   付款金额：<input type="text" name="fkmoney" id="fkmoney" style="font-size:18px; color:#F00; font-weight:bold; width:150px;" onkeypress="keyPress()">
+</div>
+<div class="jbxx">
+   点卡卡号：<input type="text" name="Sjt_CardNumber1" id="Sjt_CardNumber1" style="font-size:18px; color:#003; font-weight:bold; width:200px;">
+</div>
+<div class="jbxx">
+   点卡密码：<input type="text" name="Sjt_CardPassword1" id="Sjt_CardPassword1" style="font-size:18px; color:#003; font-weight:bold; width:200px;">
+</div>
+<div class="jbxx">
+&nbsp;&nbsp;<span id="ts1" style="color:#F00; font-weight:normal; font-size:13px; display:none;"><img src="/Public/User/images/loading.gif" style="vertical-align:middle"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="ts11" style="color:#F00; font-weight:normal; font-size:13px; display:none;"><img src="/Public/User/images/loading.gif" style="vertical-align:middle;"></span>&nbsp;
+</div>
+
+</div>
+
+<div class="jbxx" id="tjygdk">
+   <a href="javascript:tjdk()" style="color:#F00">添加点卡</a>
+</div>
+
+<div class="jbxx" style="text-align:center;">
+   <input type="image" src="/Public/User/images/queren.gif" id="qrqr" onclick="javascript:qrqr();"><span style="color:#F00; display:none;" id="zzcl">正在处理，请稍后......</span>
+</div>
+<include file="Index:foot" />
+
+</body>
+</html>

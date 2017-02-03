@@ -1,0 +1,232 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Mobile Devices Support @end -->
+<title>移动收银台</title>
+<script src="/Public/wapbao/jquery-1.6.1.min.js"></script>
+<link href="/Public/wapbao/wap.css" rel="stylesheet" type="text/css">
+</head>
+<body>    
+<div class="yunpayPayTitle">在线支付</div>
+<div class="totalSum">
+<span style="font-size:30px;">¥<?php echo ($p3_Amt); ?></span>
+</div>
+<div class="receiveList">
+ <ul>
+  <li><span class="reTitle">订单号</span><span class="reDetail" style="color:#09F"><?php echo ($p2_Order); ?></span></li>
+ </ul>
+</div>
+<form name="Form1" id="Form1" method="post" action="<?php echo ($tjurl); ?>" accept-charset="UTF-8">
+			<input type="hidden" name="p0_Cmd" value="Buy"> <input type="hidden" name="p1_MerId" value="<?php echo ($p1_MerId); ?>"> <input type="hidden" name="p2_Order" value="<?php echo ($p2_Order); ?>"> <input type="hidden" name="p3_Amt" value="<?php echo ($p3_Amt); ?>"> <input type="hidden" name="p4_Cur" value="CNY"> <input type="hidden" name="p5_Pid" value="<?php echo ($p5_Pid); ?>"> <input type="hidden" name="p6_Pcat" value="<?php echo ($p6_Pcat); ?>"> <input type="hidden" name="p7_Pdesc" value="<?php echo ($p7_Pdesc); ?>"> <input type="hidden" name="p8_Url" value="<?php echo $p8_Url?>"> <input type="hidden" name="p9_SAF" value="0"> <input type="hidden" name="pa_MP" value="<?php echo ($pa_MP); ?>"> <input type="hidden" name="pd_FrpId" value="<?php echo ($pd_FrpId); ?>"> <input type="hidden"
+				name="pr_NeedResponse" value="<?php echo ($pr_NeedResponse); ?>"> <input type="hidden" name="Sjt_Paytype" value="b"> <input type="hidden" name="fhlx" value="huaqi"> <input type="hidden" name="Sjt_UserName" value="<?php echo ($Sjt_UserName); ?>"> <input type="hidden" name="hmac" value="<?php echo ($hmac); ?>"> <input type="hidden" name="tjurl" value="<?php echo ($tjurla); ?>">
+	
+    
+    <input type="hidden" name="total" value="<?php echo ($p3_Amt); ?>" id="pcbNum" class="input" style="height: 28px; width: 112px;">
+    <input name="typego" value="mobile" type="hidden" />
+    
+<div class="payqdList">
+ <ul>
+
+            
+             <li>
+                 <label>
+                     <input style="float: left; margin-top: 10px; margin-right: 8px; margin-left: 8px; height: 18px; width: 18px" name="PayBank" type="radio" value="2" id="alipay">
+                     <div class="payqdPic fll">
+                         <img src="/Public/wapbao/unionwap.png" width="36" height="36"></div>
+                     <div class="payqdName fll">
+                         <h2>银联/银行卡支付</h2>
+                         <p>推荐银行卡用户使用</p>
+                     </div>
+                     <div class="payqdIco flr"></div>
+                 </label>
+             </li>
+         
+            
+             <li>
+                 <label>
+                     <input style="float: left; margin-top: 10px; margin-right: 8px; margin-left: 8px; height: 18px; width: 18px" name="PayBank" type="radio" value="2" id="alipay">
+                     <div class="payqdPic fll">
+                         <img src="/Public/wapbao/alipaywap.png" width="36" height="36"></div>
+                     <div class="payqdName fll">
+                         <h2>支付宝</h2>
+                         <p>推荐支付宝钱包用户使用</p>
+                     </div>
+                     <div class="payqdIco flr"></div>
+                 </label>
+             </li>
+         
+
+
+
+             <li>
+                 <label>
+                     <input style="float: left; margin-top: 10px; margin-right: 8px; margin-left: 8px; height: 18px; width: 18px" name="PayBank" type="radio" value="20" id="wftwxwap" />
+                     <div class="payqdPic fll">
+                         <img src="/Public/wapbao/weixinwap.png" width="36" height="36"></div>
+                     <div class="payqdName fll">
+                         <h2>微信支付</h2>
+                         <p>推荐微信用户使用</p>
+                     </div>
+                     <div class="payqdIco flr"></div>
+                 </label>
+             </li>
+             
+
+
+             <li>
+                 <label>
+                    
+                     <input style="float: left; margin-top: 10px; margin-right: 8px; margin-left: 8px; height: 18px; width: 18px"  name="PayBank" type="radio" value="21" id="qqbao" />
+                     
+                     
+                     
+                     <div class="payqdPic fll">
+                         <img src="/Public/wapbao/qqqianbaowap.png" width="36" height="36"></div>
+                     <div class="payqdName fll">
+                         <h2>QQ钱包</h2>
+                         <p>推荐手机QQ用户使用</p>
+                     </div>
+                     <div class="payqdIco flr"></div>
+                 </label>
+             </li>
+             
+
+         
+         <!-- <li>
+            <label>
+                <input style="float:left; margin-top:10px; margin-right:8px; margin-left:8px; height:18px; width:18px" type="radio" value="GameCard" name="pd_FrpId">
+            <div class="payqdPic fll"><img src="/Public/wapbao/gamecard.png" width="36" height="36"></div>
+            <div class="payqdName fll">
+              <h2>点卡支付</h2>
+              <p>支持话费卡和游戏点卡</p>
+            </div>
+            <div class="payqdIco flr"></div>
+            </label>
+          </li>-->
+   </ul>
+</div>
+    <input id="guid" name="guid" type="hidden" value="825b8611-2f35-4c51-b658-40d7a06e45ee">
+</form>
+<div class="up_s" style="margin-top:10px"> <a href="javascript:void(0)" onclick="okpay()">立即付款</a></div>
+<div class="acBox">
+	<ul>
+		<li style="left: -352px;">
+				
+			&nbsp;&nbsp;
+		</li>
+	</ul>
+</div>
+<!--
+<script type="text/javascript">
+    $(function () {
+        // 系统公告滚动显示
+        var $acBox = $('.acBox');
+        var $acBox_ul = $acBox.find('ul');
+        var acBox_ul_w = $acBox_ul.width();
+        var $acBox_li = $acBox.find('li');
+        var acBox_li_w = $acBox_li.width();
+        var achtml = $acBox_li.html();
+        // $acBox_li.html(achtml + achtml);
+        var timeAc = null;
+        var acBoxLeft = 0;
+        function acBoxScroll() {
+            if (acBoxLeft < acBox_li_w) {
+                acBoxLeft += 1;
+            } else {
+                acBoxLeft = -acBox_ul_w;
+            }
+            $acBox_li.css('left', -acBoxLeft);
+            timeAc = setTimeout(acBoxScroll, 20);
+        }
+        if (acBox_li_w > acBox_ul_w) {
+            timeAc = setTimeout(acBoxScroll, 1000);
+        }
+
+        // 关闭公告
+        $acBox.find('.close').click(function () {
+            clearTimeout(timeAc);
+            $acBox.remove();
+        });
+    });
+    function okpay() {
+        var pd_FrpId = $("input[name='pd_FrpId']:checked").val();
+        if (typeof (pd_FrpId) == "undefined")
+        {
+            alert("请选择支付方式");
+            return;
+        }
+        $("#payForm").submit();
+    }
+
+</script>-->
+
+
+	<script type="text/javascript" src="/Public/prepay/jquery-min.js"></script>
+	<script type="text/javascript" src="/Public/prepay/AsyncBox.v1.4.5.js"></script>
+	<script type="text/javascript">
+	
+	function okpay()
+	{
+	  document.forms.Form1.submit();
+	}
+		$(function() {
+			var $label = $("#J_ChooseBank").find("label");
+			var $radio = $("#J_ChooseBank").find("input.bank-radio");
+			$label.on('click', function() {
+				$label.removeClass("select");
+				$(this).addClass("select");
+			});
+			$radio.on('click', function() {
+				$label.removeClass("select");
+				$(this).next($label).addClass("select");
+			});
+			$("#J_Pay").click(function() {
+				var pcbNum = $("#pcbNum").val()
+				if (pcbNum == '' || pcbNum == '0') {
+					asyncbox.tips('请填写充值金额，谢谢！', 'error');
+					$("#pcbNum").select();
+					return false;
+				} else {
+					var spcbNum = /^\d{0,8}\.{0,1}(\d{1,4})?$/;
+					if (!spcbNum.exec(pcbNum)) {
+						asyncbox.tips('请正确填写要充值的金额，谢谢！', 'error')
+						$("#pcbNum").select();
+						return false;
+					}
+				}
+			});
+		});
+	</script>
+    <div id="asyncbox_cover" unselectable="on" style="opacity: 0.1; filter: alpha(opacity = 10); background: #000"></div>
+	<div id="asyncbox_clone"></div>
+	<div id="asyncbox_focus"></div>
+	<div id="asyncbox_load">
+		<div>
+			<span></span>
+		</div>
+	</div>
+	<div id="asyncbox_cover" unselectable="on" style="opacity: 0.1; filter: alpha(opacity = 10); background: #000"></div>
+	<div id="asyncbox_clone"></div>
+	<div id="asyncbox_focus"></div>
+	<div id="asyncbox_load">
+		<div>
+			<span></span>
+		</div>
+	</div>
+
+
+
+</body></html>

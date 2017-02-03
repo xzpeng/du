@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="Style/menu.js" type="text/javascript"></script>
+<link rel="stylesheet" href="Style/default.css" type="text/css" />
+<title><{:C("WEB_NAME")}>管理后台</title>
+<dl id="header">
+	<dd>
+		
+	  <li><a href="http://cs.sj887.com/" target="_blank">首页</a>&nbsp;|&nbsp;</li>
+		<li><a href="#" target="_blank">退出</a>&nbsp;|&nbsp;</li>
+	</dd>
+</dl>
+<div id="contents">
+	<div class="left">
+		<ul class="bigbtu">
+			<li id="now01"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('首 页',this);border_left('TabPage2','left_tab2');" title="首页" target="content3">首  页</a></li>
+			<li id="now02"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('发布相片',this);border_left('TabPage2','left_tab3');" title="发布相片" target="content3">发布相片</a></li>
+		</ul>
+		<div class="menu_top"></div>
+		<div class="menu" id="TabPage3">
+			<ul id="TabPage2">
+				<li id="left_tab1" class="Selected" onClick="javascript:border_left('TabPage2','left_tab1');" title="系统">系统</li>
+				<li id="left_tab2" onClick="javascript:border_left('TabPage2','left_tab2');" title="商户">商户</li>		
+				<li id="left_tab3" onClick="javascript:border_left('TabPage2','left_tab3');" title="通道">通道</li>
+				<li id="left_tab7" onClick="javascript:border_left('TabPage2','left_tab7');" title="网关">网关</li>
+				<li id="left_tab4" onClick="javascript:border_left('TabPage2','left_tab4');" title="订单">订单</li>
+				<li id="left_tab5" onClick="javascript:border_left('TabPage2','left_tab5');" title="提款">提款</li>
+			</ul>
+			<div id="left_menu_cnt">
+				<ul id="dleft_tab1">
+					<li id="now11" class="Selected"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('日志管理',this);" target="content3" title="日志管理">日志管理</a></li>
+					<li id="now12"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('浏览相册',this);" target="content3" title="浏览相册">浏览相册</a></li>
+					<li id="now13"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('日志评论',this);" target="content3" title="日志评论">日志评论</a></li>
+					<li id="now14"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('访客留言',this)" target="content3" title="访客留言">访客留言</a></li>
+					<li id="now1a"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('添加订阅',this);" target="content3" title="添加订阅">添加订阅</a></li>
+					<li id="now1b"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('邀请码',this)" target="content3" title="可用邀请码">可用邀请码</a></li>
+					<li id="now1c"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('我的好友',this)" target="content3" title="我的好友">我的好友</a></li>
+					<li id="now1d"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('更新数据',this)" target="content3" title="更新数据">更新数据</a></li>
+					<li id="now1e"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('博客设置',this)" target="content3" title="博客设置">博客设置</a></li>
+					
+					<li id="now19"><a href="http://www.mycodes.net/admin-templates/"  target="_blank" title="进入内容管理操作界面"><font color=red>内容管理员</font></a></li>							
+											
+				</ul>
+				<ul id="dleft_tab2" style="display:none;">
+					<li id="now23"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('日志管理',this)" target="content3" title="日志管理">日志管理</a></li>
+					<li id="now22"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('草稿箱',this)" target="content3" title="草稿箱">草稿箱<span id="sdraft_num"></span></a></li>
+					<li id="now28"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('回收站',this)" target="content3" title="回收站">回收站<span id="del_num"></span></a></li>
+					<li id="now24"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('日志分类',this)" target="content3" title="日志分类">日志分类</a></li>
+					<li id="now25"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('备份日志',this)" target="content3" title="备份日志">备份日志</a></li>
+					<li id="now26"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('评论管理',this)" target="content3" title="评论管理">评论管理</a></li>
+					<li id="now27"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('留言管理',this)" target="content3" title="留言管理">留言管理</a></li>
+					<li id="now29"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('引用通告',this)" target="content3" title="引用通告">引用通告</a></li>
+				</ul>
+				<ul id="dleft_tab3" style="display:none;">
+					<li id="now31"><a href="tongdao.html" onClick="go_cmdurl('快钱',this)" target="content3" title="快钱">快钱</a></li>
+					<li id="now32"><a href="tongdao.html" onClick="go_cmdurl('易宝',this)" target="content3" title="易宝">易宝</a></li>
+					<li id="now33"><a href="tongdao.html" onClick="go_cmdurl('70卡',this)" target="content3" title="70卡">70卡</a></li>
+					<li id="now34"><a href="tongdao.html" onClick="go_cmdurl('盛付通',this)" target="content3" title="盛付通">盛付通</a></li>
+                    <li id="now35"><a href="tongdao.html" onClick="go_cmdurl('财付通',this)" target="content3" title="财付通">财付通</a></li>
+					<li id="now36"><a href="tongdao.html" onClick="go_cmdurl('支付宝',this)" target="content3" title="支付宝">支付宝</a></li>
+					<li id="now37"><a href="tongdao.html" onClick="go_cmdurl('宝付',this)" target="content3" title="宝付">宝付</a></li>
+					<li id="now38"><a href="tongdao.html" onClick="go_cmdurl('10086',this)" target="content3" title="10086">10086</a></li>
+                    <li id="now39"><a href="tongdao.html" onClick="go_cmdurl('银联在线',this)" target="content3" title="银联在线">银联在线</a></li>
+				</ul>
+				<ul id="dleft_tab4" style="display:none;">
+					<li id="now41"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('所有文件',this)" target="content3" title="所有文件">所有文件</a></li>
+					<li id="now42"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('图片文件',this)" target="content3" title="图片文件">图片文件</a></li>
+					<li id="now43"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('压缩文件',this)" target="content3" title="压缩文件">压缩文件</a></li>
+					<li id="now44"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('文档文件',this)" target="content3" title="文档文件">文档文件</a></li>
+				</ul>
+				<ul id="dleft_tab5" style="display:none;">
+					<li id="now51"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('选择模板',this)" target="content3" title="选择模板">选择模板</a></li>
+					<li id="now52"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('改主模板',this)" target="content3" title="改主模板">改主模板</a></li>
+					<li id="now53"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('改副模板',this)" target="content3" title="改副模板">改副模板</a></li>
+					<li id="now54"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('备份模板',this)" target="content3" title="备份模板">备份模板</a></li>
+				</ul>
+				<ul id="dleft_tab7" style="display:none;">
+				<li id="now55"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('网银切换',this)" target="content3" title="网银切换">网银切换</a></li>
+					<li id="now56"><a href="http://www.mycodes.net/admin-templates/" onClick="go_cmdurl('点卡切换',this)" target="content3" title="点卡切换">点卡切换</a></li>
+			  </ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="menu_end"></div>
+	</div>
+	<div class="right">
+	   <ul id="TabPage1">
+			<!--<li id="Tab1" class="Selected" onClick="javascript:switchTab('TabPage1','Tab1');" title="首页">首页</li>
+			<li id="Tab2" onClick="javascript:switchTab('TabPage1','Tab2');">标签</li>-->
+			<li id="Tab3" onClick="javascript:switchTab('TabPage1','Tab3');"><span id="dnow99" style="display:block;">空白</span></li>
+	   </ul>
+		<div id="cnt">
+		  <!--<div id="dTab1" class="Box">
+		  <iframe src="#" name="content1" frameborder="0" scrolling="auto"></iframe>
+		  </div>
+			<div id="dTab2" class="HackBox Box">
+			<iframe src="第二调用地址" name="content2" frameborder="0" scrolling="auto"></iframe>
+			</div>-->
+			<div id="dTab3" class="HackBox Box">
+			<iframe src="iFrame打开地址" name="content3" id="content3" frameborder="0" scrolling="auto"></iframe>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+</body>
+</html>
+<!--by www.mycodes.net QQ：215288671 版权归原作者(www.mycodes.net)所有，仅供学习参考。-->

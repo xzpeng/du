@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员管理后台</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/wyjyjl.js' />
+<js href='/Public/My97DatePicker/WdatePicker.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+ $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(5)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(0)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(0) a").css("color","#F60");
+	$(".tjzp").click(function(e) {
+        $(this).next("span").show();
+		$(this).hide();
+    });
+	
+	$("#SearchButton").click(function(e) {
+        if($("#sq_date").val() == "" || $("#sq_date_js").val() == ""){
+			alert("开始时间或结束时间不能为空！");
+		}else{
+			window.location.href = "<{:U("Index/cxjlxj")}>?id=<{$Think.get.id}>&sq_date="+$("#sq_date").val()+"&sq_date_js="+$("#sq_date_js").val();
+		}
+    });
+});
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:800px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:auto;
+	}	
+	
+.selectclass{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-align:left;
+	font-size:15px;
+	margin:0px auto;
+	border-bottom:1px dashed #999999;
+	}
+.selectclass table{
+	width:100%;
+	height:50px;
+	}
+
+.selectclass table tr td{
+	width:9%;
+	height:50px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:12px;
+	}	
+.selectclass a{
+	font-size:13px;
+	color:#333;
+	}
+.selectclass a:hover{
+	
+	}
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:ygtop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;【<{$UserName}>】网银交易记录&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Public/User/images/fh.gif" style="cursor:pointer; vertical-align:middle;" onclick="javascript:location.href='<{:U("Index/tjyg")}>'">
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+
+  
+  <div id="txcontent">
+      
+      
+      <div class="selectclass" style="height:auto;">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+      <td>当日总额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daymoney}></span> 元</td>
+      <td>当日实收金额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daysjmoney}></span> 元</td>
+      <td>当日成功订单：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daynum}></span> 笔</td>
+      <td>当日提成：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$daytjmoney}></span> 元</td>
+      </tr>
+      <tr>
+      <td>昨日总额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$zmoney}></span> 元</td>
+      <td>昨日实收金额：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$zsjmoney}></span> 元</td>
+      <td>昨日成功订单：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$znum}></span> 笔</td>
+      <td>昨日提成：<span style="font-size:20px; color:#F00; font-weight:bold;"><{$ztjmoney}></span> 元</td>
+      </tr>
+      </table>
+      </div>
+      
+      <div class="selectclass" style="text-align:right;">
+交易时间（开始）：<input type="text" name="sq_date" id="sq_date" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:false})" style="width:100px;" value="<{$Think.get.sq_date}>">&nbsp;&nbsp;&nbsp;&nbsp;
+交易时间（结束）：<input type="text" name="sq_date_js" id="sq_date_js" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:false})" style="width:100px;" value="<{$Think.get.sq_date_js}>">&nbsp;&nbsp;&nbsp;&nbsp;成交金额：<span style="color:#F00"><{$sousuojymoney}></span> 元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提成：<span style="color:#F00"><{$sousuotc}></span> 元&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="搜 索" id="SearchButton">&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div>
+
+   <div class="selectclass">
+   <table border="0" cellpadding="0" cellspacing="0">
+   <tr style="color:#69C; font-weight:bold;">
+   <td style="width:12%;">支付方式</td>
+   <td style="width:16%;">商户订单号</td>
+   <td style="width:12%;">成功时间</td>
+   <td style="width:12%;">成功金额</td>
+   <td style="width:12%;">实收金额</td>
+   <td style="width:12%">提成金额</td>
+   <td style="width:12%;">类型</td>
+   <td style="width:12%;">状态</td>
+  
+   </tr>
+   </table>
+   </div>
+     <volist name="list" id="vo">
+     
+      <div class="selectclass">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+      <td style="width:12%;"><{$vo.bankname}></td>
+      <td style="width:16%;"><{$vo.TransID}></td>
+      <td style="width:12%;"><{$vo.TradeDate}></td>
+      <td style="width:12%;"><{$vo.trademoney}></td>
+      <td style="width:12%;"><{$vo.OrderMoney}></td>
+      <td style="width:12%;"><{$vo.TcMoney}></td>
+      <td style="width:12%;">
+       <if condition="$vo.typepay == 0">
+   订单
+   <else />
+   充值
+   </if>
+      </td>
+      <td style="width:12%;">
+       <if condition="$vo.Zt == 1">
+  成功
+  <else />
+  未处理
+  </if>
+      </td>
+     
+      </tr>
+      </table>
+      
+     
+      </div>
+      
+     </volist> 
+      <div class="selectclass" style="text-align:center;">
+      <{$page}>
+      </div>
+  </div>
+  
+</div>
+
+
+</div>
+ 
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>常见问题</title>
+<css href='/Public/css/defaultcss.css' />
+<css href='/Public/css/css.css' />
+<css href='/Public/css/slider.css' />
+<css href='/Public/css/reg.css' />
+<js href='/Public/js/jquery-1.7.2.js' />
+<js href='/Public/js/jquery.nbspSlider.1.0.min.js' />
+<js href='/Public/js/js.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#qydl").click();
+	
+	
+});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<include file="Index:Top" />
+
+
+<!--<div style="width:1002px; height:36px; background-image:url(/Public/images/login_tab_item.png); margin:0px auto; margin-top:10px;"></div>-->
+<div style="width:1002px; margin:0px auto; height:auto;" id="newlist">
+       <div style="font-size:20px; font-weight:bold; text-align:center; height:40px; line-height:40px;"><{$title}></div>
+       <div style="font-size:13px; color:#666;text-align:center; height:20px; line-height:20px;">最后编辑时间：<{$datetime}></div>
+       <div style="width:95%; height:auto; margin:0px auto;">
+       <{$content}>
+       </div>
+       <div style="width:95%; height:auto; margin:0px auto; text-align:right;"><input type="button" value="返 回" onclick="location.href='/Index_sjtcjwt.html'"></div>
+</div>
+<div style="clear:left;"></div>
+<include file="Index:Bottom" />
+</body>
+</html>

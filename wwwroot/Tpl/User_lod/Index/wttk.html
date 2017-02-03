@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/js/floatDiv.js' />
+<if condition="$tkif == 1">
+
+<js href='/Public/User/js/tktx.js' />
+
+</if>
+<script type="text/javascript">
+$(document).ready(function(e) {
+	
+	 $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(3)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(4)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(4) a").css("color","#F60");
+	
+	
+    $("#banklist").floatdiv("middle");
+	
+	$("#banklist div span").css("cursor","pointer").click(function(e) {
+		
+		if($(this).parent().children("input").attr("checked") == undefined){
+			
+		    $(this).parent().children("input").attr("checked",true);
+			
+			}else{
+				
+				 $(this).parent().children("input").attr("checked",false);
+				
+				}
+		
+    });
+	
+	
+	hqbanklist();
+	
+	
+});
+
+	
+function qrxgqrxg(){
+	
+	hqbanklist();
+	$("#banklist").hide();
+	
+	}
+	
+function wttkcheckmoney(){
+	
+	var sl = $("#yhslid").val();
+	var money = $("#money").val();
+	var kyye = $("#kyye").val();
+	if(parseFloat(sl) * parseFloat(money) > parseFloat(kyye)){
+	    
+		alert("余额不足！");
+		return false;
+		
+	}
+	checkmoney();
+	
+	$("#hjtkje").text(parseFloat(sl) * parseFloat(money));
+	
+	}	
+	
+	
+function hqbanklist(){
+	var banklist = "";
+	
+	var i = 0;
+	$("#banklist div input[name='wtbanklist']").each(function(index, element) {
+        if($(this).attr("checked") == "checked"){
+			banklist = banklist+ $(this).val()+",";
+			i++;
+			}
+    });
+	
+	
+	//alert(i);
+    $("#wtbanklisttext").val(banklist+"0");
+	$("#yhsl").html("批量提款到 <span style='color:#00F'>"+i+"</span> 个银行账号");
+	$("#yhslid").val(i);
+	if($("#money").val() != ""){
+		wttkcheckmoney();
+		}
+	}
+
+
+function wtbanklist(){
+	$("#banklist").show();
+	}
+	
+function wtgb(){
+	$("#banklist").hide();
+	}		
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	}
+#txtitle div{
+	width:150px;
+	height:50px;
+	float:left;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:50px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	}	
+#t1content,#t0content{
+	width:798px;
+	height:498px;
+	margin:0px auto;
+	border:1px solid #999;
+	background-color:#EEE;
+	}	
+.tcontent table{
+	width:700px;
+	height:auto;
+	margin:0px auto;
+	border-left:1px solid #369;
+	border-top:1px solid #369;
+	margin-top:50px;
+	}	
+.tcontent table tr td{
+	border-right:1px solid #369;
+	border-bottom:1px solid #369;
+	height:50px;
+	text-align:left;
+	padding-left:30px;
+	color:#117fbc;
+	font-weight:bold;
+	font-size:20px;
+	}
+.tcontent table tr td img{
+	cursor:pointer;
+	}	
+.tcontent table tr td input{
+	width:300px;
+	height:30px;
+	font-size:25px;
+	}		
+.clicktitlebg{
+	background-color:#EEE;
+	}
+#banklist{
+	
+	width:1000px;
+	height:550px;
+	border:10px solid #00F;
+	background-color:#FFF;
+	display:none;
+	}		
+#banklist div{
+	width:24%;
+	height:25px;
+	text-align:left;
+	line-height:25px;
+	font-size:13px;
+	float:left;
+	}	
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:fktop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+<span style="font-size:13px; color:#00F">【单笔最小提款金额：<span style="color:#0C3; font-size:15px;"><{$minmoney}></span> 元&nbsp;&nbsp;
+      单笔最大提款金额：<span style="color:#0C3; font-size:15px;"><{$maxmoney}></span> 元&nbsp;&nbsp;每天可提款总金额：<span style="color:#0C3; font-size:15px;"><{$mtsxmoney}></span>&nbsp;&nbsp;每天提款最大次数：<span style="color:#0C3; font-size:15px;"><{$mttkcs}></span> 次】</span>
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+   <br>
+   <div id="txtitle">
+   
+      <if condition="$tkif == 1">
+   
+      <div t="t1content" s="t0content" tj="1">T + 1<span style="display:none;">注：申请提款成功后，所提金额去除手续费后第二天打到您的提款银行账上！</span></div>
+      <if condition="$t0 == 1">
+      <div t="t0content" s="t1content" style="border-left:0px; color:#F00;" tj="0">T + 0<span style="display:none;">注：申请提款成功后，所提金额去除手续费后当天打到您的提款银行账上！</span></div>
+    
+      </if>
+      
+      </if>
+      <div style="width:450px; font-size:13px; border:0px;">
+      今天已申请提款总金额：<span style="color:#F00"><{$yqlmoney}></span> 元&nbsp;&nbsp;&nbsp;&nbsp;
+      今天已申请提款：<span style="color:#F00"><{$dttkcs}></span> 次
+      </div>
+   </div>
+   
+   
+   <if condition="$tkif == 1">
+   <div id="t1content" class="tcontent"></div>
+  </if>
+  
+   <div id="t0content" class="tcontent">
+   
+   <if condition="$tkif == 1">
+   <input type="hidden" id="wtwt" value="1">
+    <table border="0" cellpadding="0" cellspacing="0">
+   <tr>
+   <td style="width:auto;">可用余额：<input type="hidden" name="T" id="T"></td>
+   <td>
+   <span style="font-size:30px; color:#F00"><{$mymoney}></span> 元
+   <input type="hidden" name="kyye" id="kyye" value="<{$mymoney}>">
+   </td>
+   </tr>
+   <tr>
+   <td>单个账户提款金额：</td>
+   <td><input type="text" name="money" id="money" onkeyup="clearNoNum(this)" style="color:#F00; width:100px; vertical-align:middle;">&nbsp;&nbsp;<span style="color:#039; font-size:15px;">合计提款：<span style="color:#F00;" id="hjtkje"></span>元</span>&nbsp;&nbsp;<img src="/Public/User/images/jsjs.gif" style="vertical-align:middle;" onclick="javascript:wttkcheckmoney();"></td>
+   </tr>
+   <tr>
+   <td>手续费：</td>
+   <td><span id="sxf" style="color:#0C0"></span>&nbsp;&nbsp;<span id="dgsxf" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0C0;" id="hjsxf"></span></td>
+   </tr>
+   <tr>
+   <td>实际到账金额：</td>
+   <td style="color:#0C0;"><span id="sjdzjj" style="font-size:25px; color:#0C0"></span>&nbsp;元&nbsp;&nbsp;<span id="dgsjje" style="display:none"></span>&nbsp;&nbsp;&nbsp;<span style="color:#0C0;" id="hjsjje"></span></td>
+   </tr>
+   <tr>
+   <td>提款银行：</td>
+   <td>
+  
+   <span id="tkyhspan"><img src="/Public/User/images/tkyh.gif" style="vertical-align:middle;" onclick="wtbanklist()"></span>
+   <input type="hidden" name="wtbanklisttext" id="wtbanklisttext">&nbsp;&nbsp;&nbsp;&nbsp;<span id="yhsl" style="color:#F60"></span>
+   <input type="hidden" name="yhslid" id="yhslid">
+   </td>
+   </tr>
+    <tr>
+   <td>支付密码：</td>
+   <td>
+   <input type="password" name="paypassword" id="paypassword">
+   <input type="hidden" name="t" id="t" value="1">
+   
+   <input type="hidden" name="minmoney" id="minmoney" value="<{$minmoney}>">
+   <input type="hidden" name="maxmoney" id="maxmoney" value="<{$maxmoney}>">
+   <input type="hidden" name="mtsxmoney" id="mtsxmoney" value="<{$mtsxmoney}>">
+   <input type="hidden" name="yqlmoney" id="yqlmoney" value="<{$yqlmoney}>">
+   </td>
+   </tr>
+   <tr>
+   <td colspan="2" style="text-align:center;"><img src="/Public/User/images/sqtk.gif" onclick="sqtk();"></td>
+   </tr>
+   <tr>
+   <td colspan="2" style="font-size:15px; font-weight:normal; color:#F60;" id="tscontent"></td>
+   </tr>
+   </table>
+   
+   </if>
+   
+   
+   
+   <if condition="$tkif == 1">
+   <table border="0" cellpadding="0" cellspacing="0" class="tabts" style="display:none;">
+   <tr>
+   <td style="height:400px; text-align:center; color:#F00;">
+        正在处理，请稍后....
+   </td>
+   </tr>
+   </table>
+   <else />
+  
+        <if condition="$tkiflx == 0">
+    <table border="0" cellpadding="0" cellspacing="0" class="tabts">
+   <tr>
+   <td style="height:400px; text-align:center; color:#F00;">
+        您今天已经申请提款 <{$mttkcs}> 次,超过当天最大申请提款次数！
+   </td>
+   </tr>
+   </table>
+        <else />
+         <table border="0" cellpadding="0" cellspacing="0" class="tabts">
+   <tr>
+   <td style="height:400px; text-align:center; color:#F00;">
+       未开启委托批量结算！
+   </td>
+   </tr>
+   </table> 
+        </if>
+      
+   </if>
+   
+   </div>
+   <br>
+</div>
+
+
+</div>
+
+
+
+
+<include file="Index:foot" />
+<div id="banklist">
+  <volist name="listbank" id="vo">
+   <div>&nbsp;&nbsp;<input type="checkbox" name="wtbanklist" id="wtbanklist" checked="checked" style="vertical-align:middle;" value="<{$vo.id}>"><span><{$vo.BankCompellation}>【<{$vo.BankName}>】</span></div>
+   </volist>
+   <div style="clear:left"></div>
+   <div style="width:100%; text-align:center;">
+        <img src="/Public/User/images/qrxg.gif" style="vertical-align:middle" onclick="qrxgqrxg()">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="/Public/images/gb.gif" style="vertical-align:middle;" onclick="wtgb()">
+   </div>
+</div>
+</body>
+</html>

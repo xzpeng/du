@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>找回密码</TITLE>
+<css href='/Public/css/defaultcss.css' />
+<css href='/Public/css/css.css' />
+<css href='/Public/css/slider.css' />
+<css href='/Public/css/reg.css' />
+<script src="/Public/js/jquery.min.js"></script>
+<script src="/Public/js/bootstrap.min.js"></script>
+<link href="/Public/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript">
+function check(){
+	
+	$.ajax({
+			  type:'POST',
+			  url:'/Index_zhdlmmajax.html',
+			  data:"UserName="+$("#UserName").val()+"&AffirmTitle="+$("#AffirmTitle").val()+"&AffirmAnswer="+$("#AffirmAnswer").val(),
+			  dataType:'text',
+			  success:function(str){
+				if(str != "ok"){
+					alert(str);
+				}else{
+					document.Form1.submit();
+				}
+				  },
+			  error:function(){
+				  alert("处理失败！");
+				  }	
+			  });
+			  
+	
+	return false;		  
+}
+</script>
+</head>
+
+<body>
+<include file="Index:Top" />
+<form name="Form1" id="Form1" method="post" action="/Index_zhdlmm.html" onsubmit="return check()">
+   <div id="dengludiv">
+       <div id="dengludivtitle">&nbsp;&nbsp;找回密码</div>
+       <div id="dengludivts">
+          <div style="width:60px; height:60px; float:left; text-align:center;"><img src="/Public/images/dengludivts.gif" style="margin-top:15px;"></div>
+          <div style="width:auto; height:60px; font-size:13px;">
+            <p style="margin-top:5px; line-height:20px;"><b>温馨提示：</b></p>
+            <p style="line-height:10px;">请输入您的<{:C("WEB_NAME")}>账户名，方便我们为您有效的进行业务受理。</p>
+          </div>
+       </div>
+       <div id="dengludivcontent">
+            <div id="dengludivcontentleft">
+                <!-------------------------------------------------------------->
+              <div style="width:90%;">
+                  <div class="form-group">
+                    <label for="UserName" class="col-sm-4 control-label" style="text-align:right;">请输入账号：</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="UserName" id="UserName" placeholder="请输入您注册填写的邮箱">
+                    </div>
+                  </div>
+                 <div style="clear:left;"></div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <label for="AffirmTitle" class="col-sm-4 control-label" style="text-align:right;">请输入密码提问：</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="AffirmTitle" id="AffirmTitle" placeholder="请输入登录密码">
+                    </div>
+                  </div>
+                  <div style="clear:left;"></div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <label for="AffirmAnswer" class="col-sm-4 control-label" style="text-align:right;">请输入密码回答：</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="AffirmAnswer" id="AffirmAnswer" placeholder="验证码">
+                    </div>
+                     <div class="col-sm-4">
+                      &nbsp;&nbsp;<img class="yzm" src='/Index_verify.html' style="vertical-align:middle; height:32px; cursor:pointer;" onclick='javascript:$(".yzm").attr("src","/Index_verify_a"+ Math.random()+".html")' title="点击刷新验证码" />
+                    </div>
+                  </div>
+                 <div style="clear:left;"></div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary">找回密码</button>
+                    </div>
+                  </div>
+                
+                </div>
+                <!-------------------------------------------------------------->
+            </div>
+            <div id="dengludivcontentright">
+              
+              <button type="button" class="btn btn-default" onclick="javascript:window.location.href='<{:U("Index/dengluqy")}>'">用户登录</button><br><br>
+          <button type="button" class="btn btn-default" onclick="javascript:window.location.href='<{:U("Index/jhzh")}>'">账号激活</button><br><br>
+            </div>
+       </div>
+   </div>
+</form>
+
+<div style="clear:left;"></div>
+<include file="Index:Bottom" />
+</body>
+</html>

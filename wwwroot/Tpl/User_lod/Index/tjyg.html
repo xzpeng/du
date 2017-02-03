@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(5)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(0)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(0) a").css("color","#F60");
+	$(".tjzp").click(function(e) {
+        $(this).next("span").show();
+		$(this).hide();
+    });
+});
+
+function tjsh(){
+	if(confirm("请确保完善了基本资料后再提交审核，提交审核后不能再修改基本信息！") == true){
+		location.href = "/User_Index_shjksh.html";
+	}
+}
+</script>
+<style type="text/css">
+#yggl{
+	width:100%;
+	height:auto;
+	}
+#yggl tr td{
+	width:10%;
+	height:40px;
+	text-align:left;
+	padding-left:10px;
+	vertical-align:middle;
+	font-size:13px;
+	}	
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:ygtop" />
+
+
+<!-------------------------------------------------基本信息-------------------------------------------------------->
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;下级管理
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px">
+   <table border="0" cellpadding="0" cellspacing="0" style="width:100%;" id="yggl">
+   <tr>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">用户名</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">姓名</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">状态</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">费率</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">账户余额</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">今日订单数量</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">今日订单金额</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">今日提成</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">总共提成</td>
+   <td style="font-weight:bold;border-bottom:1px solid #CCC;">订单记录</td>
+
+   </tr>
+   <volist name="list" id="vo">
+   
+  <switch name="vo.status">
+<case value="0"><tr style="background-color:#D7D7D7"></case>
+<case value="1"><tr></case>
+<case value="2"><font style="color:#F00"><tr style="background-color:#F90"></font></case>
+</switch>
+
+   <td><{$vo.UserName}></td>
+   <td><{$vo.Compellation}></td>
+   <td><switch name="vo.status">
+<case value="0">未激活</case>
+<case value="1">正常</case>
+<case value="2"><font style="color:#F00">锁定</font></case>
+</switch></td>
+<td><{$vo['id']|GetFl=###}></td>
+<td style="color:#060; font-weight:bold;">￥<span style="font-weight:normal"><{$vo['id']|GetYuE=###}></span></td>
+ <td><{$vo['id']|GetDayNum=###}></td>
+    <td style="color:#060; font-weight:bold;">￥<span style="font-weight:normal"><{$vo['id']|GetMoney=###}></span></td>
+    <td style="color:#060; font-weight:bold;">￥<span style="font-weight:normal"><{$vo['id']|GetTiCheng=###}></span></td>
+    <td style="color:#060; font-weight:bold;">￥<span style="font-weight:normal"><{$vo['id']|GetzTiCheng=###}></span></td>
+   <td><a href="<{:U('Index/cxjlxj','id='.$vo['id'])}>" style="color:#003">查询</a></td>
+   
+ 
+   </tr>
+   </volist>
+   <tr style="font-size:14px;"><td colspan="18" style="text-align:center;"><{$page}>&nbsp;</td></tr>
+   </table>
+   
+    
+</div>
+
+</div>
+<br>
+
+
+
+<include file="Index:foot" />
+</body>
+</html>

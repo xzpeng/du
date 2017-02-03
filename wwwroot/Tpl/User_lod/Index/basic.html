@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{:C("WEB_NAME")}>会员管理后台</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/User/js/js.js' />
+<script type="text/javascript" src="/Public/User/js/pcasunzip.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(1)").addClass("menu_bg");
+	
+	$("#menu_x > div > div:eq(0)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(0) a").css("color","#F60");
+});
+</script>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:zhgl" />
+<form name="Form1" action="/User_Index_basicsave.html" method="post">
+
+<volist name="list" id="vo">
+
+<!-------------------------------------------------基本信息-------------------------------------------------------->
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;基本信息
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px">
+    <div class="jbxx">
+    <input type="hidden" name="id" id="id" value="<{$vo.id}>" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：
+    <if condition="$vo.Compellation == ''">
+    <input type="text" class="input_text form-control" name="Compellation" id="Compellation" value="<{$vo.Compellation}>">
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">请输入身份证上的姓名，添加后不能修改。</span>
+    <else />
+    <span style="color:#000; font-weight:bold;"><{:htmlspecialchars($vo["Compellation"])}></span>
+    </if>
+    
+    </div>
+     <div class="jbxx">
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ号：<input type="text" class="input_text" name="qq" id="qq" style="width:100px;" value="<{$vo.qq}>" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    
+    <div class="jbxx">
+    身份证号：<input type="text" class="input_text" name="IdentificationCard" id="IdentificationCard" style="width:300px;" value="<{$vo.IdentificationCard}>" />
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">请输入正确的身份证号</span>
+    </div>
+     <div class="jbxx">
+      手机号码：<input type="text" class="input_text" name="MobilePhone" id="MobilePhone" style="width:200px;" value="<{$vo.MobilePhone}>">
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">请输入常用的手机号码。</span>
+     </div>
+    <div class="jbxx">
+     联系电话：<input type="text" class="input_text" name="Tel" id="Tel" style="width:200px;" value="<{$vo.Tel}>">
+     &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">请输入您公司的座机号码，如 010-123123。</span>
+    </div>
+    <div class="jbxx" style="display:none;">
+     所在省市：
+     <select name="Province" id="province"></select>&nbsp;&nbsp;
+     <select name="City" id="city"></select>
+   <script type="text/javascript">
+	 new PCAS("province","city","area");
+	 $(document).ready(function(e) {
+        $("#province").val('<{$vo.Province}>').change();;
+		$("#city").val('<{$vo.City}>');
+    });
+   </script>	
+   &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">请选择您现在所在的省市。</span>	
+    </div>
+    <div class="jbxx">
+    联系地址：<input type="text" class="input_text" name="Address" id="Address" style="width:500px;" value="<{$vo.Address}>">
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tsts">请输入您现在所在省市的详细联系地址。</span>
+    </div>
+ 
+
+   
+    <div class="jbxx" style="text-align:center; height:50px;">
+    <input type="image" src="/Public/User/images/qrxg.gif" style="vertical-align:middle">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="/Public/User/images/chongzhi.gif" onclick="javascript:document.Form1.reset()" style="vertical-align:middle; cursor:pointer;">  
+    </div>
+    
+</div>
+</div>
+<!-------------------------------------------------基本信息-------------------------------------------------------->
+
+ </volist>  
+
+ </form>
+<include file="Index:foot" />
+
+</body>
+</html>

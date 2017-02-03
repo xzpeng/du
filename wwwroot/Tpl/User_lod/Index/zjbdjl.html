@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商户中心</title>
+<css href='/Public/User/css/css.css' />
+<js href='/Public/User/js/jquery-1.7.2.js' />
+<js href='/Public/js/floatDiv.js' />
+<js href='/Public/My97DatePicker/WdatePicker.js' />
+<script type="text/javascript">
+$(document).ready(function(e) {
+	
+	 $("#banklist").floatdiv("middle");
+	
+   $("#menu div").addClass("menu_bg_y");
+	$("#menu div:eq(2)").addClass("menu_bg");
+	$("#menu_x > div > div:eq(12)").css("background-image","url(/Public/User/images/menumenu.gif)");
+	$("#menu_x > div > div:eq(12) a").css("color","#F60");
+	
+	
+	 $("#SearchButton").click(function(e) {
+        window.location.href = "/User_Index_zjbdjl.html?sq_date="+$("#sq_date").val()+"&sq_date_js="+$("#sq_date_js").val()+"&pagepage="+$("#pagepage").val()+"&lx="+$("#lx").val();
+	 });
+	
+});
+</script>
+<style type="text/css">
+#txtitle{
+	width:800px;
+	height:50px;
+	margin:0px auto;
+	text-align:center;
+	}
+#txtitle div{
+	width:800px;
+	height:30px;
+	font-weight:bold;
+	font-size:20px;
+	color:#06C;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #999;
+	border-bottom:0px;
+	cursor:pointer;
+	margin:0px auto;
+	}
+	
+#txcontent{
+	width:1000px;
+	height:auto;
+	}	
+	
+.selectclass{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-align:left;
+	font-size:15px;
+	margin:0px auto;
+	border-bottom:1px dashed #999999;
+	}
+.selectclass table{
+	width:100%;
+	height:50px;
+	border-left:1px solid #999;
+	border-top:1px solid #999;
+	}
+
+.selectclass table tr td{
+	width:20%;
+	height:50px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:12px;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+	}	
+.selectclass a{
+	font-size:13px;
+	color:#333;
+	}
+.selectclass a:hover{
+	
+	}
+</style>
+</head>
+
+<body>
+<include file="Index:top" />
+<include file="Index:jyjltop" />
+
+<div class="xgjcxx">
+<div style="border:1px solid #ccc; background-image:url(/Public/User/images/menu_bg_x.jpg); width:1000px; height:40px; line-height:40px; font-size:15px; text-align:left; font-weight:bold; color:#333">
+&nbsp;&nbsp;&nbsp;&nbsp;资金变动记录
+</div>
+
+<div style="width:1000px; height:auto; border:1px solid #CCC; border-top:0px;" id="ntj">
+
+  
+  <div id="txcontent">
+  
+
+  <div class="selectclass" style="font-size:12px; text-align:center; border-bottom:0px;">
+  
+交易时间（开始）：<input type="text" name="sq_date" id="sq_date" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:false})" style="width:100px;" value="<{$Think.get.sq_date}>">&nbsp;&nbsp;&nbsp;&nbsp;
+交易时间（结束）：<input type="text" name="sq_date_js" id="sq_date_js" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:false})" style="width:100px;" value="<{$Think.get.sq_date_js}>">&nbsp;&nbsp;&nbsp;&nbsp;
+类型：
+<select name="lx" id="lx">
+<option value="">全部类型</option>
+<option value="1">网银交易</option>
+<option value="2">提成记录</option>
+<option value="4">提款记录</option>
+<option value="5">减金记录</option>
+<option value="6">增金记录</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+每页：
+<select name="pagepage" id="pagepage">
+<option value="10">10条</option>
+<option value="15">15条</option>
+<option value="20">20条</option>
+<option value="25">25条</option>
+<option value="30">30条</option>
+<option value="35">35条</option>
+<option value="40">40条</option>
+<option value="45">45条</option>
+<option value="50">50条</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="搜 索" id="SearchButton">
+<script type="text/javascript">
+$("#pagepage").val(<{$Think.get.pagepage}>);
+$("#lx").val(<{$Think.get.lx}>);
+</script>
+  </div>
+  
+   <div class="selectclass" style="height:auto; overflow:hidden; border-bottom:0px;">
+   <table cellpadding="0" cellspacing="0" border="0" id="listuser">
+<tr>
+<td colspan="2" style="text-align:right; font-size:20px; font-weight:bold;">合计金额：</td>
+<td style="font-size:20px; color:#00F; font-weight:bold;"><{$hjje}></td>
+<td colspan="2">&nbsp;</td>
+
+
+</tr>
+<tr style="background-color:#5d7b9d; color:#fff;">
+
+<td style="width:30%">交易时间</td>
+<td>原金额</td>
+<td>变动金额</td>
+<td>变动后金额</td>
+<td style="width:10%;">交易类型</td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+<td style="font-size:18px; width:30%;">
+<{$vo.datetime}>
+&nbsp;</td>
+<td style="font-size:20px; font-weight:bold; color:#060;"><{$vo.ymoney}></td>
+<td style="font-size:20px; font-weight:bold;">
+<if condition="$vo.money gt 0">
+<span style="color:#0F0;">+
+<else />
+<span style="color:#F00">
+</if>
+<{$vo.money}>
+</span>
+</td>
+<td style="font-size:20px; font-weight:bold; color:#66F"><{$vo.gmoney}></td>
+<td style="width:10%;">
+<switch name="vo.lx">
+  <case value="1">网银交易</case>
+  <case value="2">提成记录</case>
+  <case value="4">提款记录</case>
+  <case value="5">减金记录</case>
+  <case value="6">增金记录</case>
+</switch></td>
+</tr>
+</volist>
+<tr>
+<td colspan="20"><{$page}></td>
+</tr>
+</table>
+   </div>
+ 
+    
+  </div>
+  
+</div>
+
+
+</div>
+ 
+<div style="clear:left;"></div>
+<include file="Index:foot" />
+
+</body>
+</html>

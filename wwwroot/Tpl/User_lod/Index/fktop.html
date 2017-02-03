@@ -1,0 +1,28 @@
+<div id="menu_x">
+   <div>
+<div><a href="/User_Index_npdy.html">转账</a></div>
+<div style="width:20px;">|</div>
+<div><a href="/User_Index_tktx.html">提现</a></div>
+<div style="width:20px;">|</div>
+<div><a href="/User_Index_wttkselect.html">委托提款</a></div>
+<div style="width:20px;">|</div>
+<div style="position:relative" id="sqktgn"><a href="#">申请开通功能</a>
+<div style="position:absolute; top:28px; left:0px; width:100px; height:83px; background-color:#0159b3; display:none;">
+   <div style="width:100%; height:40px; line-height:40px; text-align:center; color:#FFF; font-weight:bold; font-size:13px; border-bottom:1px dashed #CCCCCC; cursor:pointer;" onclick="javascript:location.href='/User_Index_sqtjl.html'">T+0</div>
+   <div style="width:100%; height:40px; line-height:40px; text-align:center; color:#FFF; font-weight:bold; font-size:13px; border-bottom:1px dashed #CCCCCC; cursor:pointer; display:none" onclick="javascript:location.href='/User_Index_sqzdjs.html'">自动结算</div>
+   <div style="width:100%; height:40px; line-height:40px; text-align:center; color:#FFF; font-weight:bold; font-size:13px; border-bottom:1px dashed #CCCCCC; cursor:pointer; display:none;" onclick="javascript:location.href='/User_Index_wyfljl.html'">费率调整</div>
+   <div style="width:100%; height:40px; line-height:40px; text-align:center; color:#FFF; font-weight:bold; font-size:13px; cursor:pointer;" onclick="javascript:location.href='/User_Index_wtplxf.html'">委托批量下发</div>
+</div>
+</div>
+   </div>
+ </div>  
+ <script type="text/javascript">
+ $(document).ready(function(e) {
+    $("#sqktgn").mouseover(function(e) {
+        $("#sqktgn > div").show();
+    });
+	$("#sqktgn").mouseout(function(e) {
+        $("#sqktgn > div").hide();
+    });
+});
+ </script>

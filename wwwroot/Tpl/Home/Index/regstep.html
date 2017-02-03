@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>账户注册</TITLE>
+<css href='/Public/css/defaultcss.css' />
+<css href='/Public/css/css.css' />
+<css href='/Public/css/slider.css' />
+<css href='/Public/css/reg.css' />
+<js href='/Public/js/jquery-1.7.2.js' />
+<js href='/Public/js/jquery.nbspSlider.1.0.min.js' />
+<js href='/Public/js/js.js' />
+<js href='/Public/js/reg.js' />
+</head>
+
+<body>
+<include file="Index:Top" />
+
+
+<div id="Company_Content">
+<div class="zcx zc" style="background-image:url(/Public/images/reg01.jpg)">
+   <div style="width:100%; height:119px; line-height:30px; font-size:30px; color:#039; text-align:left;"><p style="font-weight:bold; margin-top:10px;">企业注册</p>
+   <span style="font-size:13px; margin-left:30px;  font-weight:normal; color:#333">丰富的产品服务，满足您一切支付需求</span><br>
+<span style="font-size:13px; margin-left:30px;  font-weight:normal; color:#333">首家通过国家信息安全认证，保障交易安全</span>
+   </div>
+   <div style="widows:100%; height:80px; text-align:left;"><br><img src="/Public/images/qy_reg.gif" style="margin-top:20px;border:0px; margin-left:20px; cursor:pointer;" reg="/Public/images/qy_reg.gif" UserType="1" id="regcodeclick"></div>
+</div>
+<div style="margin-left:10px; background-image:url(/Public/images/reg02.jpg);" class="zcx zc">
+ <div style="width:100%; height:119px; line-height:30px; font-size:30px; color:#F60; text-align:left;"><p style="font-weight:bold; margin-top:10px;">个人注册</p>
+ <span style="font-size:13px; margin-left:30px;  font-weight:normal; color:#333">会员专享的优惠购买服务</span><br>
+ <span style="font-size:13px; margin-left:30px;  font-weight:normal; color:#333">会员支付、免费转账等功能</span>
+</div>
+    <div style="widows:100%; height:80px; text-align:left;"><br><img src="/Public/images/gr_reg.gif" style="margin-top:20px; border:0px; margin-left:20px; cursor:pointer;" reg="/Public/images/gr_reg.gif" UserType="0"></div>
+</div>
+<div style="clear:left;"></div><br>
+<div style="width:1000px; height:30px; border:1px dashed #a9becf; margin:0px auto; margin-top:10px; line-height:30px; text-align:center;" class="zc">
+如果您已经是会员，请直接&nbsp;<a href="/Index_dengluqy.html" style="color:#F00;">登录</a>。
+</div>
+
+<form name="Form1" id="Form1" method="post" action="/Index_reg.html" onsubmit="return check()">
+<div style="width:760px; height:482px; margin:0px auto; margin-top:10px; display:none; background-image:url(/Public/images/regreg.gif)" id="regdiv">
+<div style="width:100%; height:39px; line-height:39px; text-align:left; font-size:15px; font-weight:bold;">
+<eq name="Think.get.regtype" value="1">
+员工注册
+<else />
+如果您已经是会员，请直接&nbsp;<a href="/Index_dengluqy.html" style="color:#F00;">登录</a>。
+</eq>
+</div>
+
+<div style="width:100%; height:70px;">
+
+</div>
+<eq name="Think.get.regtype" value="1">
+<div class="regtitle reginput" style="">
+主&nbsp;账&nbsp;号&nbsp;商&nbsp;户&nbsp;编&nbsp;号：<span style="color:#000; font-weight:bold"><{$shh}></span>
+</div>
+</eq>
+<div class="regtitle reginput">
+账&nbsp;户&nbsp;名：<input type="text" name="UserName" id="UserName" style="width:200px; height:25px; vertical-align:middle; font-size:20px; color:#06C;" class="inputtext">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px; color:#666;">账户只能用Email邮箱地址</span>
+<div class="errordiv">账号不正确！</div>
+</div>
+
+
+<div class="regtitle reginput">
+登录密码：<input type="password" name="LoginPassWord" id="LoginPassWord" style="width:200px; height:25px; vertical-align:middle; font-size:20px; color:#06C;" class="inputtext">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px; color:#666;">登录密码为6-16位数字、字母、符号的组合</span>
+<div class="errordiv">密码不正确！</div>
+</div>
+
+
+<div class="regtitle reginput">
+确认密码：<input type="password" name="OkPassWord" id="OkPassWord" style="width:200px; height:25px; vertical-align:middle; font-size:20px; color:#06C;" class="inputtext">
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px; color:#666;">再次确认输入登录密码</span>
+<div class="errordiv">密码不正确！</div>
+</div>
+
+<div class="regtitle reginput">
+验&nbsp;证&nbsp;码：<input type="text" name="verify" id="verify" style="width:100px; height:25px; vertical-align:middle; font-size:20px; color:#06C;" class="inputtext">
+<img class="yzm" src='/Index_verify.html' style="vertical-align:middle; width:100px; height:25px;" onclick='javascript:$(".yzm").attr("src","/Index_verify_a+"+ Math.random()+".html")' title="点击刷新验证码" />
+<div class="errordiv">验证码不正确！</div>
+</div>
+
+
+<div class="reginput" style="margin-top:10px; text-align:center;">
+<input type="hidden" name="UserType" id="UserType">
+<eq name="Think.get.regtype" value="1">
+<input type="hidden" name="SjUserID" id="SjUserID" value="<{$Think.get.regcode}>">
+<else />
+<input type="hidden" name="SjUserID" id="SjUserID" value="0">
+</eq>
+<input type="image" src="/Public/images/qy_reg.gif" style="vertical-align:middle;">&nbsp;&nbsp;
+<neq name="Think.get.regtype" value="1">
+<a href="javascript:fanhui()" style="font-size:15px; color:#069;">返 回</a>
+
+</neq>
+</div>
+
+</div>
+</form> 
+</div>
+<div style="clear:left;"></div>
+<include file="Index:bottom" />
+<eq name="Think.get.regtype" value="1">
+<script type="text/javascript">
+  var reg = "/Public/images/ygzc.gif"
+		var UserType = $(this).attr("UserType");
+		$(".zc").fadeOut(10,function(){
+			$("#regdiv input[type='image']").attr("src",reg);
+			$("#UserType").val(3);
+			$("#regdiv").fadeIn(10);
+			})
+</script>
+</eq>
+</body>
+</html>
