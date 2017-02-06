@@ -510,24 +510,24 @@ exit();
                                 if($this->_post("mbk") == "" && !session("?mbk")){
                                     
                                         ///////////////////////////////////////////
-         $Arraylist = array("A","B","C","D","E","F","G","H","I");
-         session("mbk","");
-         session("mbkcheck","");
-         $Passwordblock = M("Passwordblock");
-         $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
-         session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
-         session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
-         $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
-         session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
-         session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
-         $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
-         session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
-         session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
-         $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
-         session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
-         session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
-         
-         exit("mbk");
+                                 $Arraylist = array("A","B","C","D","E","F","G","H","I");
+                                 session("mbk","");
+                                 session("mbkcheck","");
+                                 $Passwordblock = M("Passwordblock");
+                                 $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
+                                 session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
+                                 session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
+                                 $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
+                                 session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
+                                 session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
+                                 $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
+                                 session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
+                                 session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
+                                 $mbkstr = $Arraylist[rand(0,8)].rand(1,9);
+                                 session("mbk", $mbkstr."&nbsp;&nbsp;".session("mbk"));
+                                 session("mbkcheck",$Passwordblock->where("UserID=".$UserID)->getField($mbkstr).session("mbkcheck"));
+                                 
+                                 exit("mbk");
          
          
          
@@ -551,7 +551,7 @@ exit();
                             session("UserName",$UserName);
                             session("UserType",$User_Type);
                             session("UserID",$UserID);
-                            exit(session('UserName'));
+                            //exit(session('UserName'));
                             exit("ok");
                             }
 						}

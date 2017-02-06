@@ -4,7 +4,6 @@ class IndexAction extends Action{
 	
     public function __construct(){
          parent::__construct();
-         var_dump(session("?UserName"));die;
          if(!session("?UserName") || !session("?UserType") || !session("?UserID")){
             
             $this->display("Index:exit");
