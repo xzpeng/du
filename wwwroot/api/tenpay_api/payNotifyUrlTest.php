@@ -8,7 +8,7 @@ $str = json_encode($_REQUEST);
 
 //$url = 'http://qb.com/Payapi_QQbao_BaoKoYiBuUrl.html?out_trade_no='.$_REQUEST['out_trade_no'];
 
-$url = 'http://du.local/Payapi_QQbao_BaoKoYiBuUrl.html?out_trade_no='.$_REQUEST['out_trade_no'];
+$url = 'http://du.pengxiaozhou.com/Payapi_QQbao_BaoKoYiBuUrl.html?out_trade_no='.$_REQUEST['out_trade_no'];
 
 
 file_get_contents($url);

@@ -46,7 +46,7 @@ $reqHandler->setParameter("bargainor_id","1419111801");  //商户号
 $reqHandler->setParameter("sp_billno",$out_trade_no);  //商户订单号
 $reqHandler->setParameter("total_fee", $_GET['total_fee']*100);  //总金额
 $reqHandler->setParameter("fee_type", 1);               //币种
-$reqHandler->setParameter("notify_url", "http://du.local/tenpay_api/payNotifyUrl.php");
+$reqHandler->setParameter("notify_url", "http://du.pengxiaozhou.com/tenpay_api/payNotifyUrl.php");
 //业务可选参数
 //$reqHandler->setParameter("attach", "");             	  //附件数据，原样返回就可以了
 //$reqHandler->setParameter("time_start", date("YmdHis"));  //订单生成时间
@@ -54,7 +54,7 @@ $reqHandler->setParameter("notify_url", "http://du.local/tenpay_api/payNotifyUrl
 
 
 $strtoting = "ver=2.0&charset=2&bank_type=0&desc=在线支付&pay_channel=1&bargainor_id=1419111801&sp_billno=".$out_trade_no.
-               "&total_fee=".($_GET['total_fee']*100)."fee_type=1&notify_url=http://du.local/tenpay_api/payNotifyUrl.php";
+               "&total_fee=".($_GET['total_fee']*100)."fee_type=1&notify_url=http://du.pengxiaozhou.com/tenpay_api/payNotifyUrl.php";
               //商品标记
 //请求的URL
 

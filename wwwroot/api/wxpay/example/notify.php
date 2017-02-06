@@ -29,7 +29,7 @@ class PayNotifyCallBack extends WxPayNotify
 			 $trade_no =  $result['transaction_id'];
 			 $trade_status  =  $result["return_code"];
 			 
-			 $koko=  "http://du.local/Payapi_Wxdemo_BaoKoUrl.html?";
+			 $koko=  "http://du.pengxiaozhou.com/Payapi_Wxdemo_BaoKoUrl.html?";
 			 $str = $koko."sp_billno=$sp_billno&transaction_id=$trade_no&trade_status=$trade_status&weixin=1&pay_result=0";
 			
 			 Log::DEBUG("file_get_url:" . $str);

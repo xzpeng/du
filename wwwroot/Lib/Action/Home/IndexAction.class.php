@@ -13,7 +13,7 @@ class IndexAction extends Action {
 	 //  echo($str."ddddddd");
 	   if($str != ""){
 		   $str = trim($str,"&");
-		   $str = "http://du.local/Payapi_Index_Pay.html?".$str;	
+		   $str = "http://du.pengxiaozhou.com/Payapi_Index_Pay.html?".$str;	
 		   $this->gheader($str);
 		 // header("Location: $str")；
 		  // exit();
@@ -394,7 +394,7 @@ exit();
 		if($result_ko){
 
 			
-			echo "<script>alert('注册成功!请登陆后点击审核信息菜单填写相关信息后提交审核后,联系客服为您审核.');location.href='http://du.local/index_login.html'</script>";
+			echo "<script>alert('注册成功!请登陆后点击审核信息菜单填写相关信息后提交审核后,联系客服为您审核.');location.href='http://du.pengxiaozhou.com/index_login.html'</script>";
 			//  echo "chenggong ";
 		}else{
 			  echo "reg fail ";

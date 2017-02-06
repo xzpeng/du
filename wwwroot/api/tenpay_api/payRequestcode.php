@@ -42,9 +42,9 @@ $reqHandler->setParameter("total_fee", $_GET['total_fee']*100);  //总金额
 
 //$reqHandler->setParameter("total_fee",0.01*100);  //总金额
 $reqHandler->setParameter("fee_type", 1);               //币种
-$reqHandler->setParameter("notify_url", "http://du.local/Payapi_QQbao_BaoKoUrl.html");
+$reqHandler->setParameter("notify_url", "http://du.pengxiaozhou.com/Payapi_QQbao_BaoKoUrl.html");
 
-$reqHandler->setParameter("return_url", "http://du.local/Payapi_QQbao_BaoKoUrlbibi.html");//支付成功后返回
+$reqHandler->setParameter("return_url", "http://du.pengxiaozhou.com/Payapi_QQbao_BaoKoUrlbibi.html");//支付成功后返回
 //业务可选参数
 //$reqHandler->setParameter("attach", "");             	  //附件数据，原样返回就可以了
 //$reqHandler->setParameter("time_start", date("YmdHis"));  //订单生成时间
@@ -209,7 +209,7 @@ var out_sn = '<?php echo $out_trade_no;?>';
              //ajax php
 			 
 			 $.ajax({
-			    url:'http://du.local/Payapi_QQbao_BaoKoYiBuUrl.html',//百度接口api 鹰眼
+			    url:'http://du.pengxiaozhou.com/Payapi_QQbao_BaoKoYiBuUrl.html',//百度接口api 鹰眼
 			    type:'POST', //GET
 			    async:true,    //或false,是否异步
 			    data:{
@@ -226,7 +226,7 @@ var out_sn = '<?php echo $out_trade_no;?>';
 						  if(res==1)
 						  {
 							  clearInterval(f); //清楚定时器
-							  location.href='http://du.local/payapi/success.php?out_trade_no=<?php echo $_GET['out_trade_no'];?>&total_fee=<?php echo $_GET['total_fee'];?>';
+							  location.href='http://du.pengxiaozhou.com/payapi/success.php?out_trade_no=<?php echo $_GET['out_trade_no'];?>&total_fee=<?php echo $_GET['total_fee'];?>';
 							  return false;
 						  }else
 						  {

@@ -21,7 +21,7 @@
              $this->sjt_OrderMoney=floatval($this->OrderMoney)*floatval($this->Paymoneyfen);//订单金额
              $string = "out_trade_no=".$this->TransID.'&total_fee='.$this->sjt_OrderMoney.''.
                        "&key=".$this->_Md5Key."&partner=".$this->_MerchantID;
-             $url ="http://du.local/api/wxpay/example/native.php?".$string;
+             $url ="http://du.pengxiaozhou.com/api/wxpay/example/native.php?".$string;
              echo "<script>location.href='".$url."'</script>"; exit;
          }
          

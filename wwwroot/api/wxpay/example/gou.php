@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form action="http://du.local/Payapi_Wxdemo_BaoKoUrl.html" method="post" id="myform" name="myform">
+<form action="http://du.pengxiaozhou.com/Payapi_Wxdemo_BaoKoUrl.html" method="post" id="myform" name="myform">
 
 	<input name="sp_billno" value="<?php echo $_GET['sp_billno']?>"/>
     <input name="transaction_id" value="<?php echo $_GET['transaction_id']?>"/>

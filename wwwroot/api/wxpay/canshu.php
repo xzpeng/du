@@ -29,7 +29,7 @@ $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://du.local/wxpay/example/notify.php");
+$input->SetNotify_url("http://du.pengxiaozhou.com/wxpay/example/notify.php");
 //$input->SetTrade_type("JSAPI");
 $input->SetTrade_type("MWEB");
 

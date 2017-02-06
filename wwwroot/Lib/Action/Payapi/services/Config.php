@@ -9,8 +9,8 @@
         static $appId="1483073883204354";//商户的应用ID
         static $secure_key="5aakQ8Ye0goRPMQlJgN9AAmQEBrqLYWH";//商户的秘钥
         static $timezone="Asia/Shanghai";//时间时区
-        static $front_notify_url="http://du.local/Payapi_WftWxWap_MerChantUrl.html";
-        static $back_notify_url="http://du.local/Payapi_WftWxWap_ReturnUrl.html";
+        static $front_notify_url="http://du.pengxiaozhou.com/Payapi_WftWxWap_MerChantUrl.html";
+        static $back_notify_url="http://du.pengxiaozhou.com/Payapi_WftWxWap_ReturnUrl.html";
         
         const TRADE_URL="https://pay.ipaynow.cn";
         const QUERY_URL="https://pay.ipaynow.cn";

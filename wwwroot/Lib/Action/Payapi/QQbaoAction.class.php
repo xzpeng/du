@@ -41,7 +41,7 @@
              $string = "out_trade_no=".$this->TransID.'&total_fee='.$this->sjt_OrderMoney.''.
                        "&key=".$this->_Md5Key."&partner=".$this->_MerchantID;
              
-             $url ="http://du.local/api/tenpay_api/payRequestcode.php?".$string;
+             $url ="http://du.pengxiaozhou.com/api/tenpay_api/payRequestcode.php?".$string;
              echo "<script>location.href='".$url."'</script>";
              
              exit;

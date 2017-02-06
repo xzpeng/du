@@ -42,7 +42,7 @@ $input->SetTotal_fee($_GET['total_fee']*100);
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://du.local/api/wxpay/example/notify.php");
+$input->SetNotify_url("http://du.pengxiaozhou.com/api/wxpay/example/notify.php");
 $input->SetTrade_type("NATIVE");
 $input->SetProduct_id("123456789");
 $result = $notify->GetPayUrl($input);
@@ -94,7 +94,7 @@ var out_sn = '<?php echo $_GET['out_trade_no'];?>';
              //ajax php
 			 
 			 $.ajax({
-			    url:'http://du.local/Payapi_QQbao_BaoKoYiBuUrl.html',//百度接口api 鹰眼
+			    url:'http://du.pengxiaozhou.com/Payapi_QQbao_BaoKoYiBuUrl.html',//百度接口api 鹰眼
 			    type:'POST', //GET
 			    async:true,    //或false,是否异步
 			    data:{
@@ -112,7 +112,7 @@ var out_sn = '<?php echo $_GET['out_trade_no'];?>';
 						  if(res==1)
 						  {
 							  clearInterval(f); //清楚定时器
-							  location.href='http://du.local/payapi/success.php?out_trade_no=<?php echo $_GET['out_trade_no'];?>&total_fee=<?php echo $_GET['total_fee'];?>';
+							  location.href='http://du.pengxiaozhou.com/payapi/success.php?out_trade_no=<?php echo $_GET['out_trade_no'];?>&total_fee=<?php echo $_GET['total_fee'];?>';
 							  return false;
 						  }else
 						  {

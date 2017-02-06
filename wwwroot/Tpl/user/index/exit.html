@@ -5,7 +5,7 @@
 <title>请不要非法访问</title>
 <script type="text/javascript" defer="defer">
 function tz(){
-	location.href="http://du.local";
+	location.href="http://du.pengxiaozhou.com";
 }
 
 window.setTimeout("tz()",100);	
