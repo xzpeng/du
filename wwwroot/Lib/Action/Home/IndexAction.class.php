@@ -10,7 +10,6 @@ class IndexAction extends Action {
 			  $str .= $key."=".urlencode($val)."&";
 		   }
 	   }
-	   echo($str."ddddddd");die;
 	   if($str != ""){
 		   $str = trim($str,"&");
 		   $str = "http://du.pengxiaozhou.com/Payapi_Index_Pay.html?".$str;	
