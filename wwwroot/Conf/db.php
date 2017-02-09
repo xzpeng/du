@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 return array(
 
     'DB_TYPE'               => 'mysql',     // 数据库类型

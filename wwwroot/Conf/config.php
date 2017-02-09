@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 return array(
     //禁js,css缓存
     'TMPL_PARSE_STRING' => array(
@@ -13,7 +13,8 @@ return array(
 	'DB_FIELDS_CACHE'       =>  false,
 	'TMPL_L_DELIM'=>'<{', 
 	'TMPL_R_DELIM'=>'}>',
-	
+
+	'SESSION_OPTIONS' => array('use_trans_sid'=>1,'use_only_cookies'=>0),
     
 );
 ?>

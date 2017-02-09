@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 		return array(
 			'WEB_URL' => 'du.pengxiaozhou.com',
 			'WEB_URL_CZ' => 'du.pengxiaozhou.com',
