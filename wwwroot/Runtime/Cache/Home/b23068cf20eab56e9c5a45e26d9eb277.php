@@ -1,0 +1,295 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<title>信付云计费-为站长和开发者提供聚合多种支付通道du.pengxiaozhou.com</title>
+<meta name="keywords" content="信付云计费,第四方支付,支付解决方案,移动互联网计费专家,一站式提供国内外专业的计费解决方案,手游计费,O2O计费,一键支付,聚合支付" />
+<meta name="description" content="信付云计费,只需一个账号,轻松获得多种支付通道（微信支付、支付宝、QQ钱包、财付通、银联）,致力于为个人以及企业站长、个人及企业开发团队提供安全、便捷、专业、简单的第四方在线支付交易服务。" />
+<link href="/static/css/bootstrap.min.css?v=1482062933" rel="stylesheet" /> 
+<link href="/static/css/index.min.css?v=1482062933" rel="stylesheet" />
+<script src="/static/js/jquery.min.js?v=1482062933" type="text/javascript"></script>
+<script src="/static/js/index.min.js?v=1482062933" type="text/javascript"></script>
+<meta name="baidu-site-verification" content="5hLGFbiVKq" />
+</head>
+<body>
+<header>
+<div class="logo">
+  <a href="/index.html"><img src="static/picture/logo.png" alt="首页"class="img-responsive" />
+  </a>
+        </div>
+
+        <nav class="menu">
+          <ul class="list-inline">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li><a>支付场景</a></li>
+            <li><a>产品服务</a></li>
+            <li><a>支付渠道</a></li>
+            <li><a>产品优势</a></li>
+            <li><a>接入流程</a></li>
+            <li><a>关于</a></li>
+            <li><a>联系</a></li>
+            <li><a href="http://du.pengxiaozhou.com/Index_login.html">进入商户平台</a></li>
+          </ul>
+        </nav>
+         <div class="hotline">
+         </div> 
+        <div class="menu-icon">
+  			<a href="tel:0817-2445360" title="点击直拨"><span class="glyphicon glyphicon-earphone"></span></a>
+            <span class="glyphicon glyphicon-th-large"></span>
+        </div>
+    </header>  
+    <div class="welcome"></div>  
+    <section class="video">
+
+    	<div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide nth1">
+                <div class="box" >
+                  <div class="left"></div>
+                  <div class="right" >
+                	<span>年专注，移动互联网支付</span><i></i>
+                    <p>始于 2009 - 2016 展望未来<br />专注于商户提供完美支付解决方案</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide nth2">
+              	<div class="box">
+                	<span>安全、快捷、方便</span><i></i>
+                    <p>一次对接、一个账单、一个平台<br />解决所有支付问题</p>
+                </div>
+              </div>
+              <div class="swiper-slide nth3">
+              	<div class="box">
+                  <div class="top">专业团队</div>
+                  <div class="mid"></div>
+                  <div class="bottom">30分钟快速审核<br />7*24小时技术支持 </div>
+                </div>
+              </div>
+              <div class="swiper-slide nth4">
+              	<div class="box">
+                  <div class="top"><span>先入为主，布局未来</span><i></i></div>
+                  <div class="bottom">全面布局<u>PC</u>端与<u>移动</u>端<br />抢占头等商机<br />
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="innerBox">
+        	<div class="news">
+            	
+            </div>
+            <div class="guide"></div>
+            <a class="movedown"></a>
+        </div>
+    </section>   
+    <section class="business">
+      <div class="box">
+        <div class="caption">
+        	<i></i><span>全支付场景覆盖</span>
+            <br class="clear" />
+        </div>
+        <ul class="items list-inline">
+        	<li class="pc">
+            	<i></i><strong>互联网支付</strong>
+                <p>PC网页支付<br />多渠道支付</p>
+            </li>
+            <li class="mobi">
+            	<i></i><strong>手机支付</strong>
+                <p>ios/Aandroid/HTML5<br />微信公众号</p>
+            </li>
+            <li class="sys">
+            	<i></i><strong>扫码支付</strong>
+                <p>线上线下扫码支付<br />支持支付宝和微信支付双渠道</p>
+            </li>
+            <li class="app">
+            	<i></i><strong>企业打款</strong>
+                <p>支持商户向企业/个人帐户打款<br />到账周期短, 费率低</p>
+            </li>
+            <li class="host">
+            	<i></i><strong>分期支付</strong>
+                <p>信用消费，降低消费门坎<br />安全高效的风控体系
+极速审核使用</p>
+            </li>
+        </ul>
+      </div>
+    </section>
+    <section class="cases">
+      <div class="box">
+    	<div class="caption">
+        	<i></i><span>产品服务</span>
+            <br class="clear" />
+        </div>
+        <div class="swiper-container items">
+           <div class="swiper-wrapper">
+                 <div class="swiper-slide">
+                    <a href="http://du.pengxiaozhou.com/index_login.html">
+                    <img src="static/picture/11.jpg" alt="" href="http://du.pengxiaozhou.com/index_login.html"/>
+                    <p><strong>支付通道代开</strong><br />让您省去繁琐步骤，一次申请通过</p></a>
+                  </div>
+<div class="swiper-slide">
+                    <a href="http://du.pengxiaozhou.com/index_login.html">
+                    <img src="static/picture/22.jpg" alt="" href="http://du.pengxiaozhou.com/index_login.html"/>
+                    <p><strong>Android/IOS接口SDK</strong><br />使用我们的SDK，一分钟极速接入</p></a>
+                  </div>
+    <div class="swiper-slide">
+                    <a href="http://du.pengxiaozhou.com/index_login.html">
+                    <img src="static/picture/33.jpg" alt="" />
+                    <p><strong>云管理后台</strong><br />云端后台高效接入，一键生成账户报表</p></a>
+                 </div>
+           </div>    
+    </section> 
+    <section class="clients">
+   	  <div class="box">
+    	<div class="caption">
+        	<i></i><span>全主流支付渠道支持</span>
+            <br class="clear" />
+        </div>
+		<div style="clear:both;"></div>
+        <ul class="items list-inline">
+        	<li class="cctv"></li>
+            <li class="unicom"></li>
+            <li class="tsinghua"></li>
+            <li class="cas"></li>
+            <li class="sipo"></li>
+            <li class="apple"</li>
+            <li class="das"></li>
+            <li class="hunantv"></li>
+            <li class="sino"></li>
+            <li class="report"></li>        
+        </ul>
+      </div>
+    </section>  
+    <section class="quality">
+      <div class="box">
+    	<div class="caption">
+        	<i></i><span>产品优势</span>
+            <br class="clear" />
+        </div>
+        <div class="swiper-container items">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide nth1">
+                <ul class="list-inline">
+                  <li class="mobi"></li>
+                </ul>
+                <p><span style="font-size:16px;color:#00A7F8;font-weight:700;">秒速</span><br />您仅需集成SDK<br />敲几行代码即可接入支付</p>
+              </div>
+              <div class="swiper-slide nth2">
+              	<ul class="list-inline">
+                  <li class="ie"></li>
+                </ul>
+                <p><span style="font-size:16px;color:#00A7F8;font-weight:700;">高效</span><br />简洁流畅的操作体验<br />让支付和收钱更简单</p>
+              </div>
+              <div class="swiper-slide nth3">
+              	<ul class="list-inline">
+                  <li class="windows"></li>
+                </ul>
+                <p><span style="font-size:16px;color:#00A7F8;font-weight:700;">安全</span><br />多重数据加密<br />严控访问权限保障交易安全</p>
+              </div>
+              <div class="swiper-slide nth4">
+                <ul class="list-inline">
+                  <li class="wending"></li>
+                </ul>
+                <p><span style="font-size:16px;color:#00A7F8;font-weight:700;">稳定</span><br />统计系统运行状态<br />随时随地查看系统运转情况</p>
+              </div>
+
+            </div>
+        </div>     
+      </div>
+    </section>
+    <section class="marketing">
+      <div class="box">
+        <div class="caption">
+        	<i></i><span>接入流程</span>
+            <br class="clear" />
+        </div>
+        <ul class="items list-inline">
+        	<li class="se">
+            	<i></i><strong>注册</strong>     
+            </li>
+            <li class="weixin">
+            	<i></i><strong>商户认证</strong>            
+            </li>
+            <li class="weibo">
+            	<i></i><strong>创建应用</strong>             
+            </li>
+            <li class="sms">
+            	<i></i><strong>配置参数</strong>            
+            </li>
+            <li class="pay">
+            	<i></i><strong>接入SDK</strong>             
+            </li>
+            <li class="bbs">
+            	<i></i><strong>应用上线</strong>           
+            </li>
+        </ul>
+      </div>
+    </section> 
+    <section class="aboutus">
+    	<ul class="menu"><li>思想</li><li>关于</li></ul>
+        <div class="swiper-container items">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide nth1">
+                <strong>厚积薄发</strong>
+                <p>登上峰顶，不是为了饱览风光，是为了寻找更高的山峰<br />日出东方，告别了昨天的荣耀，将光芒照向更远的地方<br />一路上，我们更在意如何积累和沉淀</p>
+                <u>下一秒，让你看，我们到底有多强</u>
+              </div>
+              <div class="swiper-slide nth2">
+              	<strong>南充信付信息技术有限公司</strong>
+                <p>南充信付信息技术有限公司坐落在“顺庆府”四川南充，注册资金80万。公司员工人数约60人，其中技术人员占总员工人 数比例的30%，拥有多名软件开发、通讯技术工程师，业务团队占总员工人数比例的50%，超过90%以上的员工已达到大专以上学历，是充满着激情和创意思维，且拥有多年互联网从业经验的团队。</p>           
+              </div>          
+            </div>
+        </div>     
+    </section>
+    <section class="contact">
+    	<div class="box">
+        	<div class="above">
+            	<div class="wechat"><img src="static/picture/wechat_code.jpg" alt="#" /></div>
+                <div class="left">
+                	<span style="color:#2fb8f7;font-size:20px;font-weight:700;">南充海付信息技术有限公司</span>
+<br/>
+                <p>24小时服务电话：0817-2445360<br />服务QQ：871449122<br>邮编：637000</p>
+                </div>
+                 <div class="right">
+                	 <br>地址：四川省南充市顺庆区小西街25号 <br />Copyright©2014-2016 All Rights Reserved <br>
+                	  <a href="http://www.miitbeian.gov.cn/">蜀ICP备16033332号-2</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="dock">
+        <ul class="icons">
+        	<li class="up"><i></i></li>
+            <li class="im">
+            	<i></i><p>信付支付<br />在线沟通，请点我<a href="http://wpa.qq.com/msgrd?v=3&uin=871449122&site=qq&menu=yes" target="_blank">在线咨询</a></p>
+            </li>
+            <li class="tel">
+            	<i></i><p>咨询热线：<br />0817-2445360<br />售后电话：<br />0817-2445360</p>
+            </li>
+            <li class="wechat">
+            	<i></i><p><img src="static/picture/wechat_code.jpg" alt="扫描关注公众账号" /></p>
+            </li>
+            <li class="down"><i></i></li>
+        </ul>
+        <a class="switch"></a>
+    </div>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fd24e7a806a9e79f4a3eba2cc5f17e3d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+</body>
+</html>
